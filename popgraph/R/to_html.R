@@ -7,12 +7,25 @@
 #' @return The text of the html file to be saved or viewed in the appropriate browser.
 #' @author Rodney J. Dyer <rjdyer@@vcu.edu>
 #' @export
-to_html <- function( graph ) {
+to_html <- function( graph, file ) {
   if( !inherits( graph, "population_graph") )
     stop("Cannot save a kml file from a popgraph that is not made from a popgraph...")
+  if( missing( file ))
+    stop("Cannot save a html output of a popgraph with no file...")
+  
+  heading <- system.file("extdata","d3header.html",package="popgraph")
+  footing <- system.file("extdata","d3footer.html",package="popgraph")
+  
+  if( !nchar(heading) | !nchar(footing) )
+    stop("Cannot run this until the package is actually installed. ")
   
   
-  ret <- ""
+  head <- paste( readLines(heading),collapse="\n" )
+  foot <- paste( readLines(footing), collapse="\n" )
+  json <- to_json( graph )
   
-  return("the html graph contents")
+  htmltext <- paste(head,json,foot,collapse="\n")
+  
+  write(htmltext,file)
+  invisible(NULL)
 }

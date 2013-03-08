@@ -15,15 +15,10 @@ LazyLoad: yes
 Depends:
     R (>= 2.15),
     igraph,
-    RJSONIO,
     sp
 Imports:
     MASS
 Collate:
-    'as_json.R'
-    'as_matrix.R'
-    'as_SpatialLines.R'
-    'as_SpatialPoints.R'
     'congruence_topology.R'
     'decorate_popgraph.R'
     'population_graph.R'
@@ -33,3 +28,7 @@ Collate:
     'to_html.R'
     'to_kml.R'
     'popgraph-package.R'
+    'to_json.R'
+    'to_matrix.R'
+    'to_SpatialLines.R'
+    'to_SpatialPoints.R'

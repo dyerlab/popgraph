@@ -10,39 +10,61 @@ to_json <- function( graph ) {
   if( !inherits(graph,"population_graph"))
     stop("This function requires a population_graph object to function")
   
-  require(RJSONIO)
+  # make vector 
+  quotify <- function( df ){
+    keys <- names(df)
+    ret <- "["
+    cols <- ncol(df)
+    for(i in 1:nrow(df) ) {
+      row <- "{"
+      for( j in 1:ncol(df)){
+        row <- paste(row,"\"",keys[j],"\":",sep="")
+        valsep <- ifelse( is.numeric( df[i,j]), "", "\"" )
+        row <- paste(row,valsep,df[i,j],valsep,sep="")
+        if( j < ncol(df) )
+          row <- paste( row, ",", sep="")
+      }
+      ret <- paste(ret, row,"}",sep="")
+      
+      if( i < nrow(df))
+        ret <- paste(ret,", ",sep="")
+      
+    }
+    ret <- paste( ret, ']',sep="")
+    return(ret)
+  }
   
   
   # do the nodes
-  l <- list()
   node.attr.names <- list.vertex.attributes( graph )
   if( !("name" %in% node.attr.names) )
     stop("Vertices are indexed by the property 'name' and your graph does not have one...")
+  nodes <- data.frame( name=rep("libby",length(V(graph))) )
   for( attr in node.attr.names )
-    l[[attr]] <- get.vertex.attribute( graph, attr )
-  d <- data.frame( l )
-  if( !("group" %in% names(d)))
-    d$group <- "all"
+    nodes[[attr]] <- get.vertex.attribute( graph, attr )
+  if( !("group" %in% names(nodes) ) )
+    nodes$group <- "All"
+  nodestr <- quotify(nodes)
   
-  nodes <- split( d, rownames(d))
-  names(nodes) <- NULL
-  
-  edges <- list()
-  
+  # make the edges
+  K <- length(E(graph))
+  edgedf <- data.frame( source=rep(1,K), target=rep(1,K) )
   if( "weight" %in% list.edge.attributes(graph))
     graph <- set.edge.attribute(graph,"weight", value=5)
-  wts <- get.adjacency(graph, attr="weight")
+  wts <- as.matrix(get.adjacency(graph, attr="weight"))
   idx <- 1
-  for( i in 1:length(V(graph))){
-    edge.indices <- graph[[i]][[1]]
-    
-    for(edge in edge.indices ){
-      row <-  list("source"=(i-1), "target"=(edge-1), "weight"=wts[i,edge])
-      edges[[i]] <- row
-      idx <- idx+1
+  N <- length(V(graph))
+  for( i in 1:N){
+    for( j in i:N) {
+      if(wts[i,j] > 0 ) {
+        edgedf$source[idx] <- (i-1)
+        edgedf$target[idx] <- (j-1)
+        idx <- idx + 1
+      }
     }
   }
+  edgestr <- quotify(edgedf)
   
-  g <- list( "nodes"=nodes,"edges"=edges )
-  return( toJSON( g ))
+  ret <- paste("var myjson = '{ \"nodes\":", nodestr, ", \"links\":",edgestr,"}';", sep="")
+  return( ret )
 }
