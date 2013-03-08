@@ -57,7 +57,7 @@ NULL
 #' 
 #' This is the population graph for the Lophocereus data
 #'  that is discussed in Dyer & Nason (2004).
-#' @name Lopho
+#' @name lopho
 #' @docType data
 #' @keywords data
 NULL
@@ -66,7 +66,7 @@ NULL
 #' 
 #' This is the population graph for the Upiag data
 #'  that is currently unpublished.
-#' @name Upiga
+#' @name upiga
 #' @docType data
 #' @keywords data
 NULL

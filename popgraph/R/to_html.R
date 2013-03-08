@@ -11,8 +11,15 @@ to_html <- function( graph ) {
   if( !inherits( graph, "population_graph") )
     stop("Cannot save a kml file from a popgraph that is not made from a popgraph...")
   
+  heading <- system.file("inst","extdata","d3header.html",package="popgraph")
+  footer <- system.file("inst","extdata","d3footer.html",package="popgraph")
   
-  ret <- ""
+  if( !nchar(heading) | !nchar(footer) )
+    stop("Cannot run this until the package is actually installed. ")
+  
+  json <- to_json( graph )
+  
+  
   
   return("the html graph contents")
 }

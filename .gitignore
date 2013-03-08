@@ -11,3 +11,10 @@ popgraph/inst/doc/Popgraph.md
 # Example code in package build process
 *-Ex.R
 .Rproj.user
+
+
+# Ignore the building and checking part
+popgraph.Rcheck
+popgraph_1.0.tar.gz
+popgraph/man/
+
