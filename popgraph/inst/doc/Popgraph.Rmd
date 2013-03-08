@@ -1,0 +1,142 @@
+<!-- 
+%\VignetteEngine{knitr}
+%\VignetteIndexEntry{Popgraphs}
+-->
+
+<link href="http://dyerlab.bio.vcu.edu/media/dyerlab.doc.css" rel="stylesheet"></link>
+
+Popgraphs
+========================================================
+
+<!--  Some preamble stuff for knitr  -->
+```{r setup, include=FALSE}
+library(knitr)
+opts_chunk$set(out.extra='style="display:block; margin: auto"', fig.align="center")
+```
+
+
+Introdution
+-----------
+
+The **popgraph** package is designed to take multivariate data and construct a Population Graph (Dyer & Nason 2004).  This is a graph-theoretic interpretation of genetic covariance and serves as a tool for understanding underlying evolutionary history for a set of populations.  
+
+These routines were originally in the **gstudio** package but were excised out for simplicity. This analysis is *not* limited solely to genetic data and can be used generally for many types of analyses.  As such, I pulled this out of the genetic package and allow it to remain on its own.  To get your data using **gstudio** with genotypes and such into a format for this package, translate the genotypes into their multivariate format as:
+
+```{r,echo=TRUE,eval=FALSE}
+data <- as.matrix( my_genetic_data )
+```
+
+For more information on this, see the documentation on the **gstudio** package (a copy is mirrored at http://dyerlab.bio.vcu.edu/)
+
+
+Creating Population Graphs
+--------------------------
+
+There are two ways to create a population graph:
+
+1. In this package using the function *population_graph()* and,
++  Via the servers at http://dyerlab.bio.vcu.edu (which use this packages to do the translation) or via GeneticStudio (an older software package)
+
+
+### Creating *De Novo* Graphs
+
+Here we will focus on the former approach as it is native to this package.  If you use the latter one, it will produce a *.pgraph file and you can read it in using 
+
+
+
+### Reading Existing Popgraph Files
+
+
+The 
+
+```{r,eval=FALSE,echo=TRUE}
+require(popgraph)
+graph <- read.popgraph( "thegraph.pgraph" )
+```
+
+
+
+```{r}
+class(lopho)
+summary(lopho)
+```
+
+
+
+
+
+### Saving Population Graph Objects
+
+
+A *popgraph* object is a normal R object and can be saved using the normal R mechanisms.
+
+```{r,echo=TRUE,eval=FALSE}
+save( lopho, file="MyLophoGraph.rda")
+```
+
+
+For interoperability, popgraph objects can also be saved in other formats.
+
+
+Mapping Population Graphs
+-------------------------
+
+
+
+### Plain Visualization
+
+Since a graph is simply a 
+
+
+
+### Saving to Spatial* Data Object from **sp**
+
+
+
+
+
+
+
+Testing for Topological Congruence
+----------------------------------
+
+If you have more than one topology and the node sets overlap sufficiently, you can test for the topological congruence of the two.  There are several specific reasons why population graph topologies may be congruent.  In this section we use the spatial genetic structure of the Senita cactus (*Lophocereus schottii*) and its obligate pollinator, *Upiga virescens* as an example.  This is an obligate pollination mutualism and as such we should expect there to be some degree of sptial genetic congruence between the species due to this coevolution.  
+
+
+
+
+
+
+
+
+Extracting Graph-Theoretic Parameters
+-------------------------------------
+
+The underlying structure of a popgraph object is based upon the **igraph** package from Gabor Csardi.  A population graph is essentially a specific kind of *igraph* object and can be decorated with metadata that is useful for spatial population genetic analyses.  As such, there is a wealth of existing analyses from both the **igraph** as well as the **sna** packages that can be used on popgraph objects.  Here are some examples.
+
+### Matrix Representations of Population Graph Objects
+
+
+
+### Node Specific Parameters
+
+
+
+
+### Edge Specific Parameters
+
+
+
+
+
+
+
+
+
+
+
+
+References
+----------
+
+Dyer RJ, Nason JD. 2004. Population Graphs: the graph theoretic shape of genetic structure. *Molecular Ecology*, **13** 1713-1727.
