@@ -1,5 +1,13 @@
 # History files
 .Rhistory
 
+# Ignore the look of the readme markup
+README.html
+
+# Ignore the intermediary doc files from Rmd
+popgraph/inst/doc/Popgraph.html
+popgraph/inst/doc/Popgraph.md
+
 # Example code in package build process
 *-Ex.R
+.Rproj.user

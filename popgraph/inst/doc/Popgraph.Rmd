@@ -26,7 +26,7 @@ These routines were originally in the **gstudio** package but were excised out f
 data <- as.matrix( my_genetic_data )
 ```
 
-For more information on this, see the documentation on the **gstudio** package (a copy is mirrored at http://dyerlab.bio.vcu.edu/)
+For more information on this, see the documentation on the **gstudio** package (a copy is mirrored at http://dyerlab.bio.vcu.edu/ and a clone of the package can be checked out at https://github.com/dyerlab/gstudio)
 
 
 Creating Population Graphs
