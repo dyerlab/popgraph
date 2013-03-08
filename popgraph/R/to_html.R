@@ -13,11 +13,23 @@ to_html <- function( graph, file ) {
   if( missing( file ))
     stop("Cannot save a html output of a popgraph with no file...")
   
+<<<<<<< HEAD
   heading <- system.file("extdata","d3header.html",package="popgraph")
   footing <- system.file("extdata","d3footer.html",package="popgraph")
   
   if( !nchar(heading) | !nchar(footing) )
     stop("Cannot run this until the package is actually installed. ")
+=======
+  heading <- system.file("inst","extdata","d3header.html",package="popgraph")
+  footer <- system.file("inst","extdata","d3footer.html",package="popgraph")
+  
+  if( !nchar(heading) | !nchar(footer) )
+    stop("Cannot run this until the package is actually installed. ")
+  
+  json <- to_json( graph )
+  
+  
+>>>>>>> 93aef9e9427c3469fa7514bd53781b1128da40fb
   
   
   head <- paste( readLines(heading),collapse="\n" )
