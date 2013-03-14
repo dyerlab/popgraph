@@ -1,4 +1,4 @@
-context("read.popgraph.R")
+context("read_popgraph.R")
 
 test_that("testing", {
   file <- "~/Documents/Dropbox/R/popgraph/pkg/data/Lopho.pgraph"

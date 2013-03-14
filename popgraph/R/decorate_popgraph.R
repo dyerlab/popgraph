@@ -13,6 +13,9 @@
 #' @export
 decorate_popgraph <- function( graph, df, stratum.key="Population" ) {
   
+  if( !(stratum.key %in% list.vertex.attributes(graph)))
+    stop("You must indicate which vertex attribute represents node names.")
+
   node.labels <- V(graph)$name 
   num.nodes <- length( node.labels )
   
@@ -35,7 +38,6 @@ decorate_popgraph <- function( graph, df, stratum.key="Population" ) {
     }
     graph <- set.vertex.attribute(graph, cat, value=vec )    
   }  
-  
   
   return( graph )
 }

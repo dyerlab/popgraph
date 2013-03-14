@@ -1,20 +1,25 @@
 context("decorate.popgraph.R")
 
 test_that("testing", {
-  graph_file <- "~/Documents/Dropbox/R/popgraph/pkg/data/Lopho.pgraph"
-  graph <- read.popgraph( graph_file )
-  data_file <- "~/Documents/Dropbox/R/popgraph/pkg/data/Baja.meta.csv"
-  df <- read.csv(data_file,header=TRUE)
   
-  graph <- decorate.popgraph( graph, df )
+  A <- matrix(0, nrow=4, ncol=4)
+  A[1,2] <- A[2,3] <- A[1,3] <- A[3,4] <- 1
+  A <- A + t(A)
+  rownames(A) <- colnames(A) <- LETTERS[1:4]
+  g <- as.population_graph( A )
+
+  df <- data.frame(name=LETTERS[1:4], Position=c(1,2,3,4))  
+  
+  expect_that(decorate_popgraph( g, df ), throws_error() )
+  
+  g.df <- decorate_popgraph( g, df, stratum.key="name" )
       
-  expect_that( graph, is_a("igraph") )
-  expect_that( V(graph)$Longitude, is_a("numeric"))  
-  expect_that( V(graph)$Latitude, is_a("numeric"))
-  expect_that( V(graph)$Bob, is_a("NULL") )
+  expect_that( g.df, is_a("igraph") )
+  expect_that( g.df, is_a("population_graph"))
+
+  expect_that( V(g.df)$Bob, is_a("NULL") )
   
-  expect_that( V(graph)$Longitude[1], equals(-111.79) )
-  expect_that( V(graph)$Latitude[1], equals(26.59) )
-  
+  expect_that( V(g.df)$Position, is_a("numeric"))  
+  expect_that( V(g.df)$Position[1], equals(1) )
 }
 )

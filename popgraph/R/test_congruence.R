@@ -16,6 +16,9 @@
 test_congruence <- function( graph1, graph2, method=c("distance","combinatorial")[1] ) {
   cong.nodes <- intersect( V(graph1)$name , V(graph2)$name )
   
+  if( is.null(cong.nodes) )
+    stop("There appear to be no nodes in common between these two graphs")
+  
   A <- induced.subgraph(graph1, vids=cong.nodes )
   B <- induced.subgraph(graph2, vids=cong.nodes )
   
@@ -61,6 +64,7 @@ test_congruence <- function( graph1, graph2, method=c("distance","combinatorial"
     p.top <- choose( mA,mC ) * choose( mMax-mA, mB-mC )
     p.bot <- sum( choose(mA,i) * choose( mMax-mA, mB-i ))
     fit <- sum( p.top/p.bot )
+    names(fit) <- "CDF"
   }
   
   # throw nothing back

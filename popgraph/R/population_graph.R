@@ -79,6 +79,7 @@ population_graph <- function( x, groups, alpha=0.05, tol=1.0e-4, nboot=0 ) {
   
   allLD <- centroid_distance( LDValues, groups )
   allSD <- 1.0
+  
 #  Partitions <- Partition(data.frame(groups,LDValues),stratum="groups") 
 #  allLD <- lapply( Partitions, function(x) { y <- x[2:(dim(x)[2])]; return( apply(y,2,sum) ) } ) 
 #  allSD <- lapply( Partitions, function(x) { y <- x[2:(dim(x)[2])]; return( apply(y,2,var) ) } )

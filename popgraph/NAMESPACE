@@ -1,3 +1,4 @@
+export(as.population_graph)
 export(centroid_distance)
 export(congruence_topology)
 export(decorate_popgraph)

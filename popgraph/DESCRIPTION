@@ -32,3 +32,4 @@ Collate:
     'to_matrix.R'
     'to_SpatialLines.R'
     'to_SpatialPoints.R'
+    'as_population_graph.R'

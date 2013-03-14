@@ -68,20 +68,37 @@ There are several options available under the *mode* parameter.  We typically us
 + *upper* or *lower* Uses either the upper or lower element of the matrix.
 + *plus* Adds upper and lower values (e.g., $A[i,j] + A[j,i]$).
 
+There are many other ways to create *igraph* objects *de novo* but this is the easiest method.
 
-#### Node Attributes
+
+#### Node &amp; Edge Attributes
+
+The underlying structure of an *igraph* object allows you to assoicate attributes (e.g., other data) with nodes and edges. Node attributes are accessed using the $V(graph)$ operator (for vertex) and edge attributes are done via $E(graph)$.  Attributes can be set as well as retrieved using the same mechanisms.
 
 ```{r}
-V(g)$names <- LETTERS[1:4]
+V(g)$name <- LETTERS[1:4]
 V(g)$group <- c("Baja","Baja","Sonora","Sonora")
 list.vertex.attributes( g )
+V(g)$names
 ```
 
 
-#### Edge Attributes
+```{r}
+E(g)
+E(g)$color <- c("red","red", "red", "blue")
+list.edge.attributes( g )
+```
 
 
 
+### Plotting a graph
+
+One of the main benefits to using 
+
+
+```{r}
+plot(g, vertex.label=V(g)$name)
+```
 
 
 ### Reading Existing Popgraph Files
@@ -123,10 +140,6 @@ Mapping Population Graphs
 -------------------------
 
 
-
-### Plain Visualization
-
-Since a graph is simply a 
 
 
 
