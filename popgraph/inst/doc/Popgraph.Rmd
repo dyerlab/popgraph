@@ -38,25 +38,66 @@ There are two ways to create a population graph:
 +  Via the servers at http://dyerlab.bio.vcu.edu (which use this packages to do the translation) or via GeneticStudio (an older software package)
 
 
+```{r,message=FALSE}
+require(popgraph)
+```
+
+
+
 ### Creating *De Novo* Graphs
 
 Here we will focus on the former approach as it is native to this package.  If you use the latter one, it will produce a *.pgraph file and you can read it in using 
+
+```{r}
+A <- matrix(0, nrow=4, ncol=4)
+A[1,2] <- A[2,3] <- A[1,3] <- A[3,4] <- 1
+A <- A + t(A)
+A
+```
+
+
+```{r}
+g <- graph.adjacency( A, mode="undirected" )
+```
+
+There are several options available under the *mode* parameter.  We typically use the undirected graph option but the following are also available:
+
+1. *undirected* The connections between nodes are symmetric.  This is the default for population graphs as covariance, the quantity the edge is representing is symmetrical.
++ *directed* The edges are asymetric.
++ *max* or *min* Will take the largest (or smallest) value of the matrix (e.g., $max(A[i,j], A[j,i])$ or $min( A[i,j], A[j,i])$ ).
++ *upper* or *lower* Uses either the upper or lower element of the matrix.
++ *plus* Adds upper and lower values (e.g., $A[i,j] + A[j,i]$).
+
+
+#### Node Attributes
+
+```{r}
+V(g)$names <- LETTERS[1:4]
+V(g)$group <- c("Baja","Baja","Sonora","Sonora")
+list.vertex.attributes( g )
+```
+
+
+#### Edge Attributes
+
+
 
 
 
 ### Reading Existing Popgraph Files
 
 
-The 
+The online versions of Population Graphs provides a *.pgraph file for visualization. These files are visualized in several different software platforms including GeneticStudio (Dyer 2009), a OpenGL visualization application (Dyer &amp; Nason 2004), an online visualization framework at http://dyerlab.bio.vcu.edu, and of course, in R.  We shall focus on this last one.  Reading in files to R 
 
 ```{r,eval=FALSE,echo=TRUE}
-require(popgraph)
 graph <- read.popgraph( "thegraph.pgraph" )
 ```
 
 
 
+
 ```{r}
+data(lopho)
 class(lopho)
 summary(lopho)
 ```

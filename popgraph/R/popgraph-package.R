@@ -48,7 +48,7 @@ NULL
 #' 
 #' This is metadata associated with the sampling locations
 #'  for the Lophocereus and Upiga data sets.
-#' @name Baja
+#' @name baja
 #' @docType data
 #' @keywords data
 NULL
