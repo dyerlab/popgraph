@@ -15,14 +15,14 @@ LazyLoad: yes
 Depends:
     R (>= 2.15),
     igraph,
-    sp
+    sp,
+    testthat
 Imports:
     MASS
 Collate:
     'congruence_topology.R'
     'decorate_popgraph.R'
     'population_graph.R'
-    'read_popgraph.R'
     'test_congruence.R'
     'centroid_distance.R'
     'to_html.R'
@@ -33,3 +33,7 @@ Collate:
     'to_SpatialLines.R'
     'to_SpatialPoints.R'
     'as_population_graph.R'
+    'centroid_variance.R'
+    'read_population_graph.R'
+    'to_pgraph.R'
+    'write_population_graph.R'

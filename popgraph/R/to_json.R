@@ -3,10 +3,11 @@
 #' This is a nice function that takes a graph structure
 #'  and converts it to a json format for use on the web.
 #' @param graph An object of type \code{igraph}
+#' @param file A file to write the output to (default missing)
 #' @return A textual json representation of the graph
 #' @author Rodney J. Dyer <rjdyer@@vcu.edu>
 #' @export
-to_json <- function( graph ) {
+to_json <- function( graph, file ) {
   if( !inherits(graph,"population_graph"))
     stop("This function requires a population_graph object to function")
   
@@ -66,5 +67,9 @@ to_json <- function( graph ) {
   edgestr <- quotify(edgedf)
   
   ret <- paste("var myjson = '{ \"nodes\":", nodestr, ", \"links\":",edgestr,"}';", sep="")
-  return( ret )
+  
+  if( !missing(file) )
+    write(ret,file=file)
+  else
+    return( ret )
 }

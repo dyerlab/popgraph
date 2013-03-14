@@ -6,12 +6,12 @@
 #'  with an extra class property)
 #' @author Rodney J. Dyer <rjdyer@@vcu.edu>
 #' @export
-read.popgraph <- function( file ) { 
-  require( igraph )
-  
+read.population_graph <- function( file ) { 
+    
   # load in the raw stuff
   raw <- read.table( file, row.names=NULL, header=FALSE, sep=",", stringsAsFactors=FALSE)
-  params <- as.numeric(strsplit(raw[1,1],split=" ")[[1]])
+  
+  params <- as.numeric(strsplit(raw[1,1],split="[[:space:]]")[[1]]) 
   
   # set up the adjacency matrix
   K <- params[1]
@@ -45,7 +45,7 @@ read.popgraph <- function( file ) {
   
   # go through the edges 
   for( i in 1:params[2]){
-    row <- strsplit( raw[i+params[1]+1,1], split=" ")[[1]]
+    row <- strsplit( raw[i+params[1]+1,1], split="[[:space:]]")[[1]]
     if( length(row) == 3 ) {
       fidx <- which( names == row[1] )
       tidx <- which( names == row[2] )

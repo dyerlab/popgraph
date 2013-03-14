@@ -19,7 +19,6 @@ to_matrix <- function( x, mode=c("adjacency","shortest path","edge weight")[1], 
   if( !inherits(graph,"population_graph"))
     stop("This function requires a population_graph object to function")
   
-  
   ret <- NULL
   if( mode=="shortest path")
     ret <- shortest.paths( x, ... )

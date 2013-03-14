@@ -8,9 +8,8 @@
 #' @author Rodney J. Dyer <rjdyer@@vcu.edu>
 as.population_graph <- function(graph) {
   ret <- NULL
-  
   if( is(graph,"matrix")) {
-    ret <- graph.adjacency( graph, mode="undirected") 
+    ret <- graph.adjacency( graph, mode="undirected",weighted=TRUE) 
     if( is.null(colnames( graph )) )
       V(ret)$name <- as.character(paste("node",seq(1,ncol(graph)), sep="-"))
     else
