@@ -47,6 +47,6 @@ write.population_graph <- function(graph,file,format="pgraph",...){
           weights=function(graph,file){
             a <- to_matrix(graph,mode="edge weights")
           },
-          write.graph(graph,format=format)
+          write.graph(graph,file,format=format)
           )  
 }

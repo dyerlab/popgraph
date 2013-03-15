@@ -18,4 +18,10 @@ popgraph.Rcheck
 popgraph_1.0.tar.gz
 popgraph/man/
 popgraph/inst/doc/figure/
+popgraph/inst/doc/Popgraph-concordance.tex
+popgraph/inst/doc/Popgraph.log
+popgraph/inst/doc/Popgraph.pdf
+popgraph/inst/doc/Popgraph.tex
+popgraph/inst/doc/Popgraph.synctex.gz
+
 

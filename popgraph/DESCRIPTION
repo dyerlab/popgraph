@@ -16,11 +16,12 @@ Depends:
     R (>= 2.15),
     igraph,
     sp,
-    testthat,
-    maps,
-    GGally
+    testthat
 Imports:
-    MASS,
+    MASS
+Suggests:
+    maps,
+    GGally,
     fields
 Collate:
     'congruence_topology.R'

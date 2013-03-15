@@ -7,7 +7,14 @@
 
 # remove all the old documentation
 rm -rf ./popgraph/man/*.Rd
-
+rm -rf ./popgraph/inst/doc/*.html
+rm -rf ./popgraph/inst/doc/*.md
+rm -rf ./popgraph/inst/doc/*.log
+rm -rf ./popgraph/inst/doc/*.tex
+rm -rf ./popgraph/inst/doc/*.pdf
+rm -rf ./popgraph/inst/doc/*.gz
+rm -rf ./popgraph/inst/doc/*.toc
+rm -rf ./popgraph/inst/doc/figure
 
 # build the documentation using ROxygen
 echo "require(roxygen2);roxygenize('./popgraph');q(save='no')" | R --vanilla --silent
@@ -16,20 +23,8 @@ echo "require(roxygen2);roxygenize('./popgraph');q(save='no')" | R --vanilla --s
 perl -pi -e 's/\"}/}/g' ./popgraph/man/*.Rd
 perl -pi -e 's/{\"/{/g' ./popgraph/man/*.Rd
 
-
 # build the package with compacted vignettes
 R CMD build ./popgraph --compact-vignettes --resave-data
 
-
-# cleanup any stuff in the vignette document folder
-rm -rf ./popgraph/inst/doc/*.log
-rm -rf ./popgraph/inst/doc/*.tex
-rm -rf ./popgraph/inst/doc/*.pdf
-rm -rf ./popgraph/inst/doc/*.gz
-rm -rf ./popgraph/inst/doc/*.toc
-
-
 # check the package against CRAN
 R CMD check popgraph_1.0.tar.gz --as-cran
-
-

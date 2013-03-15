@@ -71,11 +71,4 @@ NULL
 #' @keywords data
 NULL
 
-#' An example data set for ALFP's
-#' 
-#' This is a text format example for aflp data
-#' @name aflps
-#' @docType data
-#' @keywords data
-NULL
 
