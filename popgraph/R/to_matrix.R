@@ -16,8 +16,9 @@
 #' @export
 #' @author Rodney J. Dyer <rjdyer@@vcu.edu> 
 to_matrix <- function( x, mode=c("adjacency","shortest path","edge weight")[1], ... ) { 
-  if( !inherits(graph,"population_graph"))
-    stop("This function requires a population_graph object to function")
+  
+  if( !inherits(x,"population_graph"))
+    stop(paste("This function requires a population_graph object to function. You passed a",class(x)))
   
   ret <- NULL
   if( mode=="shortest path")

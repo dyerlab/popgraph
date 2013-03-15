@@ -10,6 +10,7 @@
 #' @author Rodney J. Dyer <rjdyer@@vcu.edu>
 #' @export
 to_SpatialLines <- function( graph, latitude="Latitude", longitude="Longitude") {
+  require(sp)
   if( !inherits(graph,"population_graph"))
     stop("This function requires a population_graph object to function")
   

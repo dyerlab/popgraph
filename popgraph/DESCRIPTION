@@ -16,9 +16,12 @@ Depends:
     R (>= 2.15),
     igraph,
     sp,
-    testthat
+    testthat,
+    maps,
+    GGally
 Imports:
-    MASS
+    MASS,
+    fields
 Collate:
     'congruence_topology.R'
     'decorate_popgraph.R'
@@ -37,3 +40,4 @@ Collate:
     'read_population_graph.R'
     'to_pgraph.R'
     'write_population_graph.R'
+    'overlay_population_graph.R'

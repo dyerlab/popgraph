@@ -15,15 +15,14 @@ centroid_variance <- function( x, grouping ){
     stop("Your grouping and predictor variables should have the same number of rows....  Come on now.")
 
   grps <- levels( grouping) 
-  ret <- rep(NA,N)
-  names(ret) <- grps
   K <- length(grps)
+  ret <- rep(NA,K)
+  names(ret) <- grps
   
   for( i in 1:K ){
     xp <- x[ grouping == grps[i],]
     ret[i] <- sum(diag(cov(xp)))
   }
-    
-  rownames( ret ) <- levels( grouping )
+
   return( ret )
 } 

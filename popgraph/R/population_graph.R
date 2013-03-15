@@ -27,9 +27,8 @@ population_graph <- function( x, groups, alpha=0.05, tol=1.0e-4, nboot=0 ) {
   # throw warning of some groups are small
   t <- table(groups)
   if( any( t < 4 ) ) {
-    popnames <- paste( names(which(t<4)), collapse=",")
-    warning( paste( "You have strata (",popnames,") that have fewer than 4 individuals. 
-                    This anlaysis needs to have a good estimate of within stratum variance."))
+    popnames <- paste( names(which(t<4)), collapse=", ")
+    warning( paste( "You have strata (",popnames,") that have fewer than 4 individuals. This anlaysis needs to have a good estimate of within stratum variance."))
   }
 
   # make the graph

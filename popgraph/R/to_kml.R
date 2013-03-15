@@ -49,7 +49,7 @@ to_kml <- function( graph, file ) {
   ret <- "<?xml version=\"1.0\" encoding=\"UTF-8\"?>"
   ret <- c(ret, "<kml xmlns=\"http://www.opengis.net/kml/2.2\">")
   ret <- c(ret, "\t<Document>")
-  ret <- c(ret, "\t<name>Population Graph</name>")
+  ret <- c(ret, paste("\t<name>PopGraph: ",deparse(substitute(graph)),"</name>",sep=""))
   ret <- c(ret, "\t<description>A spacial representation of a Population Graph</description>")
   
   # put in the node style
@@ -71,7 +71,7 @@ to_kml <- function( graph, file ) {
   
   # make the nodes
   ret <- c(ret, "\t<Folder>")
-  ret <- c(ret, "\t<name>PopGraph Nodes</name>")
+  ret <- c(ret, "\t<name>Nodes</name>")
   ret <- c(ret, "\t<description>All the nodes from the graph file.</description>")
   
   K <- length(V(graph))
@@ -85,7 +85,7 @@ to_kml <- function( graph, file ) {
   
   # make the edges
   ret <- c(ret, "\t<Folder>")
-  ret <- c(ret, "\t<name>PopGraph Edges</name>")
+  ret <- c(ret, "\t<name>Edges</name>")
   ret <- c(ret, "\t<description>All the edges from the graph file.</description>")
   
   A <- get.adjacency(graph)

@@ -14,8 +14,10 @@ test_that("tests",{
   
   V(graph)$Latitude <- c( 47.15, 38.81, 43.08, 37.74 )
   V(graph)$Longitude <- c(-122.89,-89.98, -93.47, -77.16 )
-  ret <- to_kml(graph, file="~/Desktop/city.kml")
   
+  ret <- to_kml(graph)
+  
+  expect_that( ret, is_a("character")) 
   
   
   

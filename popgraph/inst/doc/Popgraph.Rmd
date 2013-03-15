@@ -5,7 +5,7 @@
 
 <link href="http://dyerlab.bio.vcu.edu/media/dyerlab.doc.css" rel="stylesheet"></link>
 
-Popgraphs
+Population Graphs in R
 ========================================================
 
 <!--  Some preamble stuff for knitr  -->
@@ -15,7 +15,7 @@ opts_chunk$set(out.extra='style="display:block; margin: auto"', fig.align="cente
 ```
 
 
-Introdution
+Introduction
 -----------
 
 The **popgraph** package is designed to take multivariate data and construct a Population Graph (Dyer & Nason 2004).  This is a graph-theoretic interpretation of genetic covariance and serves as a tool for understanding underlying evolutionary history for a set of populations.  
@@ -49,15 +49,18 @@ require(popgraph)
 Here we will focus on the former approach as it is native to this package.  If you use the latter one, it will produce a *.pgraph file and you can read it in using 
 
 ```{r}
-A <- matrix(0, nrow=4, ncol=4)
-A[1,2] <- A[2,3] <- A[1,3] <- A[3,4] <- 1
+A <- matrix(0, nrow=5, ncol=5)
+A[1,2] <- A[2,3] <- A[1,3] <- A[3,4] <- A[4,5] <- 1
 A <- A + t(A)
 A
 ```
 
 
+There is a quick function, `as.population_graph()` that takes either an existing *igraph* object or a matrix and turns them into *population_graph* objects.
+
+
 ```{r}
-g <- graph.adjacency( A, mode="undirected" )
+g <- as.population_graph( A )
 ```
 
 There are several options available under the *mode* parameter.  We typically use the undirected graph option but the following are also available:
@@ -76,16 +79,17 @@ There are many other ways to create *igraph* objects *de novo* but this is the e
 The underlying structure of an *igraph* object allows you to assoicate attributes (e.g., other data) with nodes and edges. Node attributes are accessed using the $V(graph)$ operator (for vertex) and edge attributes are done via $E(graph)$.  Attributes can be set as well as retrieved using the same mechanisms.
 
 ```{r}
-V(g)$name <- LETTERS[1:4]
-V(g)$group <- c("Baja","Baja","Sonora","Sonora")
+V(g)$name <- c("Olympia","Bellingham","St. Louis","Ames","Richmond")
+V(g)$group <- c("West","West", "Central","Central","East")
+V(g)$color <- "#cca160"
 list.vertex.attributes( g )
-V(g)$names
+V(g)$name
 ```
 
 
 ```{r}
 E(g)
-E(g)$color <- c("red","red", "red", "blue")
+E(g)$color <- c("red","red", "red", "blue","dark green")
 list.edge.attributes( g )
 ```
 
@@ -93,13 +97,14 @@ list.edge.attributes( g )
 
 ### Plotting a graph
 
-One of the main benefits to using 
+One of the main benefits to using R is that you can leverage the mutlitude of other packages to visualize and manipulate your data in interesting and informative ways.  Since a `population_graph` is an instance of an *igraph* element, we can use the *igraph* routines for plotting.  Here is an example.
 
 
 ```{r}
-plot(g, vertex.label=V(g)$name)
+plot(g)
 ```
 
+There are several different options you can use to manipulate the graphical forms.  By default, the plotting routines look for node and edge attributes such as `name` and `color` to plot the output appropriately.  There are several additional plotting functions
 
 ### Reading Existing Popgraph Files
 
@@ -107,19 +112,34 @@ plot(g, vertex.label=V(g)$name)
 The online versions of Population Graphs provides a *.pgraph file for visualization. These files are visualized in several different software platforms including GeneticStudio (Dyer 2009), a OpenGL visualization application (Dyer &amp; Nason 2004), an online visualization framework at http://dyerlab.bio.vcu.edu, and of course, in R.  We shall focus on this last one.  Reading in files to R 
 
 ```{r,eval=FALSE,echo=TRUE}
-graph <- read.popgraph( "thegraph.pgraph" )
+graph <- read.population_graph( "thegraph.pgraph" )
 ```
 
-
-
+Included in the **popgraph** package are some build-in data sets.  You can load these into R using the `data()` function as:
 
 ```{r}
 data(lopho)
 class(lopho)
 summary(lopho)
+plot(lopho)
 ```
 
 
+
+### Adding data to a graph
+
+A population graph is made more informative if you can associate some data with topology.  External data may be spatial or ecolgoical data associated with each node.  Edge data may be a bit more complicated as it is traversing both spatial and ecolgoical gradients and below we'll see how to extract particular from rasters using edge crossings. 
+
+The function `decorate_graph()` allows you to add more information to the graph object by combining data from an external source, in this case a `data.frame` object.  Here is an example with some built-in data.  The option `meta.stratum` indicates the name of the column that has the node labels in it (which are stored as `V(graph)$name`).
+
+```{r}
+data(baja)
+summary(baja)
+lopho <- decorate_graph( lopho, baja, meta.stratum="Population")
+lopho
+```
+
+Each vertex has seveal different types of data associated with it now.  We will use this below.
 
 
 
@@ -133,28 +153,134 @@ save( lopho, file="MyLophoGraph.rda")
 ```
 
 
-For interoperability, popgraph objects can also be saved in other formats.
+For interoperability, popgraph objects can also be saved in other formats. These are accessed through the `write.population_graph()` function.  
+
+```{r,echo=TRUE,eval=FALSE}
+write.population_graph(lopho,file="~/Desktop/Cactus.pgraph", format="pgraph")
+```
+There are several other options available for outputing your graph.  Currently the other formats that have been implemented are:
+
+1. *json* A format for html javascript data processing.  
++ *kml* The Keyhole Markup Language which is read by GoogleEarth.  This requires `Latitude` and `Longtitude` vertex properties.
++ *graphml* The graph markup language.
++ *html* Export as an interactive html document you can manipulate on your desktop (uses javascript d3.js library so you need an internet connection).
++ *pajek* Export to a format that works with the software Pajek (http://pajek.imfm.si/doku.php?id=pajek)
++ *pgraph* The format used in GeneticStudio and the original popgraph 3D viewer (this is the default).
++ *adjacency* Saves the adjacency matrix of the graph (binary) as a CSV file
++ *paths* Saves the shortest paths matrix as a CSV file
++ *weights* Saves the adjacency matrix with edge weights.
 
 
-Mapping Population Graphs
+Spatial Population Graphs
 -------------------------
 
+Mapping the nodes and edges onto real space is a key task in the understanding of how covariance is partitioned on the landscape.  There are several approaches that can be used in R since it is such a flexible platform.  In what follows I will use a series of techniques that I find useful ordered from the simplest to the more complicated.  
+
+### General Maps
+
+For quick maps I typically use the **maps** library. It is pretty straightforward to use and does not take too much thought to quickly plot something or find the approporiate raster files.  Below, I add some coordinates to the data set.
+
+```{r}
+V(g)$Latitude <- c( 47.15, 48.75,38.81, 42.26, 37.74 )
+V(g)$Longitude <- c(-122.89,-122.49,-89.98, -93.47, -77.16 )
+```
+
+Then overlay this onto a map using the `overlay_population_graph()` function.    Here is an example where I plot it over the map of the US states.
+
+```{r,message=FALSE,fig.cap="Map of graph stetched onto continential US map."}
+require(maps)
+map( "state" )
+overlay_population_graph(g)
+```
+
+This function **requires** that you already have a plot available (it uses the `lines()` and `points()` routines).  If you try to just overlay this with no existing plot, it will not work (and should throw an error).
+
+### Integrating Raster Maps
+
+At times we have raster data upon we can plot a population graph. Here is an example from Baja California. The underlying raster image is croped from a WorldClim tile and represents elevation.  
+
+```{r,message=FALSE}
+data(alt)
+plot(alt)
+```
+
+Since it is a **raster** object, it knows how to plot itself relatively well.  There are a ton of good references for showing you how to play with raster data (e.g., Bivand *et al.* 2008)
+
+To plot our graph onto this topology, we export the spatial components of the graph into objects that interact with rasters.  The packages provides simple extraction of features into `SpatialLines` and `SpatialPoints` objects.
+
+```{r}
+nodes <- to_SpatialPoints(lopho)
+nodes
+edges <- to_SpatialLines(lopho)
+edges
+```
+
+Once we have them extracted into the right format, we can add them to the raster plot.  I plot the nodes twice to overlay a circular icon (`pch=16`) onto the default cross marker and make them 50\% larger (`cex=1.5`).
+
+```{r, fig.width=8}
+plot( alt )
+plot( edges, add=TRUE, col="#555555" )
+plot( nodes, add=TRUE, col="black", cex=1.5 )
+plot( nodes, add=TRUE, col=V(lopho)$color, pch=16, cex=1.5 )
+```
 
 
+Extracting Spatial Data Using Population Graphs
+-----------------------------------------------
+
+Since we are dealing with the spatial stuff right now, it makes sense to look into how we can use the topological features of the graph to extract spatial data.  
 
 
-### Saving to Spatial* Data Object from **sp**
+### Node Specific Data
+
+The node data `nodes` is a `SpatialPoints` object and can be used to pull data from raster sources.  I'll start by creating a `data.frame` with some existing data in it.
+
+```{r}
+df.nodes <- data.frame(Pop=V(lopho)$name, Latitude=V(lopho)$Latitude, Longitude=V(lopho)$Longitude)
+```
 
 
+Then we can extract the elevation from the `alt` raster as:
+
+```{r}
+df.nodes$Elevation <- extract( alt, nodes )
+summary(df.nodes)
+```
+
+Additional data could be extracted from other rasters.  See http://worldclim.org for some example data that may prove useful.
 
 
+### Data Along Edges
 
 
+```{r}
+df.edge <- data.frame(Weight=E(lopho)$weight )
+summary(df.edge)
+```
+
+
+For each of the `{r}length(E(lopho))` edges, we can exract the elevation profile.  Here is an example from one of the edges.
+
+```{r}
+plot(alt)
+plot(edges[3],add=TRUE,col="red",lwd=3)
+```
+
+Along this transect, you can pull out the elevation values as follows (n.b., the return object is a list so I'm only taking the first, and only, element in it).
+
+```{r,message=FALSE}
+require(ggplot2)
+Elevation <- extract( alt, edges[3] )[[1]]
+Latitude <- seq(26.59,29.03,length.out=length(Elevation))
+qplot( Latitude, Elevation, geom="line" )
+```
+
+There is a lot of ways that you can play with this functionality.  This should get you going though.
 
 Testing for Topological Congruence
 ----------------------------------
 
-If you have more than one topology and the node sets overlap sufficiently, you can test for the topological congruence of the two.  There are several specific reasons why population graph topologies may be congruent.  In this section we use the spatial genetic structure of the Senita cactus (*Lophocereus schottii*) and its obligate pollinator, *Upiga virescens* as an example.  This is an obligate pollination mutualism and as such we should expect there to be some degree of sptial genetic congruence between the species due to this coevolution.  
+If you have more than one topology and the node sets overlap sufficiently, you can test for the topological congruence of the two.  There are several specific reasons why population graph topologies may be congruent.  In this section we use the spatial genetic structure of the Senita cactus (*Lophocereus schottii*) and its obligate pollinator, *Upiga virescens* as an example.  This is an obligate pollination mutualism and as such we should expect there to be some degree of spatial genetic congruence between the species due to this co-evolution.  
 
 
 
@@ -170,9 +296,66 @@ The underlying structure of a popgraph object is based upon the **igraph** packa
 
 ### Matrix Representations of Population Graph Objects
 
+A graph topology is a graphical representation of a matrix and there are several reasons why you may want to use these matrices.  The function `to_matrix()` is an easy front-end to several kinds of matrices.  Matrix structure itself can be defined by adjacency matrics, either binary (the default) or weighed by the edge weight.  Several graph-theoretic parameters are derived from the adjacency matrix.  Here is an example from our little graph that started this document.
+
+```{r}
+to_matrix( g, mode="adjacency")
+to_matrix( g, mode="edge weight")
+```
+
+In addition to who each node is connected to, it is often of interest to know the length of the shortest path through the matrix connecting nodes.  Here is a slightly larger example, using the cactus data so we can look at isolation by graph distance.
+
+```{r}
+cGD <- to_matrix( lopho, mode="shortest path")
+cGD[1:5,1:5]
+```
+
+It should be noted that the shortest distance through a population graph is defined as the parameter $cGD$, conditional graph distance (see Dyer *et al.* 2010 for more information on this parameter).
+
+Now, we need the physical distance between the nodes.  If the physical size of the sampling area is small we could just use the Pythagorean equation.  However, here the distance is relatively large and the curvature of the earth may be of interest to take into account.  There are seveal functions that will calculate 'great circle distance' but the easiest is `rdist.earth()` from the **fields** funtion.  
+
+
+```{r,warning=FALSE,message=FALSE}
+require(fields)
+pDist <- rdist.earth( cbind( V(lopho)$Longitude, V(lopho)$Latitude ) )
+```
+
+Now, we can plot these values against each other to see if there is a pattern of 'isolation by distance' captured in the graph topology.  To do this, I extract only the upper triangle (e.g., the values above the diagonal of each matrix) because they are symmetric matrices and we do not want to look at each datum twice.
+
+```{r}
+df <- data.frame( cGD=cGD[upper.tri(cGD)], Phys=pDist[upper.tri(pDist)])
+cor.test( df$Phys, df$cGD, method="spearman")
+```
+
+We can plot these values and make a trendline pretty easily.  Here is a plot using **ggplot2** (a very nice plotting library; you could use `plot()` to do the normal plotting but I think **ggplot2** does such a nice job I encourage its use).  
+
+```{r,message=FALSE}
+qplot( Phys, cGD, geom="point", data=df) + stat_smooth(method="loess") + xlab("Physical Distance") + ylab("Conditional Genetic Distance")
+```
+
+The trendline is the loess predicted line with confidence interval.  
 
 
 ### Node Specific Parameters
+
+Features of the topology can be extracted as either properties of the nodes or the edges. Node properties may provide insights into localized processes (e.g., a 'sink' population).  There are a lot of different parameters that can be derived and several packages in R that help out.  Here are some basic ones.
+
+```{r}
+df.nodes$closeness <- closeness(lopho)
+df.nodes$betweenness <- betweenness(lopho)
+df.nodes$degree <- degree( lopho )
+df.nodes$eigenCent <- evcent( lopho )$vector
+df.nodes$Region <- factor(V(lopho)$Region)
+summary(df.nodes,color="Region")
+```
+
+
+The relationship betwwen the node variables can be evaluated in a pair plot.
+
+```{r,message=FALSE,warning=FALSE,fig.width=8}
+require(GGally)
+ggpairs(df.nodes,columns=2:9, color='Region')
+```
 
 
 
@@ -180,6 +363,15 @@ The underlying structure of a popgraph object is based upon the **igraph** packa
 ### Edge Specific Parameters
 
 
+Edges may have specific properties as well.  Here are some examples using betweeness centrality, community, and regionality (if the edge connects within Baja or Sonora or crosses the Sea of Cortéz).
+
+```{r}
+df.edge$betweenness <- edge.betweenness(lopho)
+df.edge$Region <- rep("Baja",52)
+df.edge$Region[36:52] <- "Sonora"
+df.edge$Region[c(11,24,27,35)] <- "Cortez"
+ggpairs(df.edge, color="Region")
+```
 
 
 
@@ -193,4 +385,8 @@ The underlying structure of a popgraph object is based upon the **igraph** packa
 References
 ----------
 
+Bivand RS, Pebesma EJ, Gómez-Rubio V.  2008.  *Applied Spatial Data Analysis with R*  Springer, New York.
+
 Dyer RJ, Nason JD. 2004. Population Graphs: the graph theoretic shape of genetic structure. *Molecular Ecology*, **13** 1713-1727.
+
+Dyer RJ, Nason JD, Garrick RC. 2010. Landscape modeling of gene flow: improved power using conditional genetic distance derived from the topology of population networks. *Molecular Ecology*, **19**, 3746-3759.

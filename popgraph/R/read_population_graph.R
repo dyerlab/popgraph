@@ -2,14 +2,16 @@
 #' 
 #' This function imports a popgraph from the older text format
 #' @param file The path to the file that is to be saved.
+#' @param sep The column separator in the file. By default it is a 
+#'  tab but sometimes a space or other object may be used.
 #' @return A fully created popgraph file (e.g., an igraph object
 #'  with an extra class property)
 #' @author Rodney J. Dyer <rjdyer@@vcu.edu>
 #' @export
-read.population_graph <- function( file ) { 
+read.population_graph <- function( file, sep="\t" ) { 
     
   # load in the raw stuff
-  raw <- read.table( file,header=FALSE, stringsAsFactors=FALSE,sep="\t",fill=TRUE)
+  raw <- read.table( file,header=FALSE, stringsAsFactors=FALSE,sep=sep,fill=TRUE)
   raw
   
   # set up the adjacency matrix
