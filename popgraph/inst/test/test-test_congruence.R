@@ -25,6 +25,9 @@ test_that("testing", {
   expect_that( ret, is_equivalent_to(2/3))
   
   
+  expect_that( test_congruence(graph1,graph2,method="structural"), throws_error())
+  
+  
   A <- matrix(0,nrow=4,ncol=4)
   graphA <- graph.adjacency(A,mode="undirected")
   expect_that( test_congruence(graph1,graphA), throws_error())

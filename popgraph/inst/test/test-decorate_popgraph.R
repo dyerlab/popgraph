@@ -10,9 +10,9 @@ test_that("testing", {
 
   df <- data.frame(name=LETTERS[1:4], Position=c(1,2,3,4))  
   
-  expect_that(decorate_popgraph( g, df ), throws_error() )
+  expect_that(decorate_graph( g, df ), throws_error() )
   
-  g.df <- decorate_popgraph( g, df, stratum.key="name" )
+  g.df <- decorate_graph( g, df, meta.stratum="name" )
       
   expect_that( g.df, is_a("igraph") )
   expect_that( g.df, is_a("population_graph"))

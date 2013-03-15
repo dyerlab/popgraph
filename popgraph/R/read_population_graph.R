@@ -9,55 +9,37 @@
 read.population_graph <- function( file ) { 
     
   # load in the raw stuff
-  raw <- read.table( file, row.names=NULL, header=FALSE, sep=",", stringsAsFactors=FALSE)
-  
-  params <- as.numeric(strsplit(raw[1,1],split="[[:space:]]")[[1]]) 
+  raw <- read.table( file,header=FALSE, stringsAsFactors=FALSE,sep="\t",fill=TRUE)
+  raw
   
   # set up the adjacency matrix
-  K <- params[1]
-  A <- matrix( 0, ncol=K, nrow=K)
-  names <- rep("",K)
-  sizes <- rep(0,K)
-  colors <- rep("#000000",K)
+  Knode <- as.numeric(raw[1,1])
+  Kedge <- as.numeric(raw[1,2])
   
   # set up some colors
-  color_types <- c( "#9E0142",
-                    "#D53E4F",
-                    "#F46D43",
-                    "#FDAE61",
-                    "#FEE08B",
-                    "#FFFFBF",
-                    "#E6F598",
-                    "#ABDDA4",
-                    "#66C2A5",
-                    "#3288BD",
-                    "#5E4FA2")
+  names <- raw[2:(Knode+1),1]
+  sizes <- as.numeric(raw[2:(Knode+1),2])
+  colors <- rep("#FDAE61",Knode)
   
-  # iterate through the nodes
-  for( i in 1:params[1]) {
-    row <- strsplit( raw[i+1,1], split=" ")[[1]]
-    if( length( row ) == 3 ){
-      names[i] <- row[1]
-      sizes[i] <- as.numeric(row[2])
-      colors[i] <- color_types[ 1+as.numeric( row[3] ) ]
-    }
-  }
+  A <- matrix( 0, ncol=Knode, nrow=Knode)
+  
+  i<-Knode+2
+  j<-Knode+Kedge+1
+  raw1 <- raw[i:j,]
   
   # go through the edges 
-  for( i in 1:params[2]){
-    row <- strsplit( raw[i+params[1]+1,1], split="[[:space:]]")[[1]]
-    if( length(row) == 3 ) {
-      fidx <- which( names == row[1] )
-      tidx <- which( names == row[2] )
-      wt <- as.numeric( row[3])
-      if( length( fidx ) & length( tidx) ) 
-        A[fidx,tidx] <- A[tidx,fidx] <- wt
-    }
+  for( i in 1:length(raw1[,1])){
+    row <- raw1[i,]    
+    fidx <- which( names == row[1,1] )
+    tidx <- which( names == row[1,2] )
+    wt <- as.numeric( row[1,3])
+    if( length( fidx ) & length( tidx) ) 
+      A[fidx,tidx] <- A[tidx,fidx] <- wt
   }
   
   rownames(A) <- colnames(A) <- names
   graph <- graph.adjacency( A, mode="undirected", weighted=TRUE)
-  V(graph)$size <- sizes * 50
+  V(graph)$size <- sizes 
   V(graph)$color <- colors
   
   class(graph) <- c("igraph","population_graph")

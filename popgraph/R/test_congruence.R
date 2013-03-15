@@ -45,9 +45,7 @@ test_congruence <- function( graph1, graph2, method=c("distance","combinatorial"
     a22 <- 0.5 * (sum(Aa==0 & Ab==0) - length(diag(Aa) ) )
     a12 <- 0.5 * (sum(Aa==0 & Ab==1) )
     a21 <- 0.5 * (sum(Aa==1 & Ab==0) )
-    
-    
-    
+    stop("Not Implemented Yet")
   }
   
   
