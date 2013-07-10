@@ -16,7 +16,8 @@ Depends:
     R (>= 2.15),
     igraph,
     sp,
-    testthat
+    testthat,
+    ggplot2
 Imports:
     MASS
 Suggests:
@@ -42,3 +43,5 @@ Collate:
     'to_pgraph.R'
     'write_population_graph.R'
     'overlay_population_graph.R'
+    'geom_popgraph_edgeset.R'
+    'geom_popgraph_nodeset.R'
