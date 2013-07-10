@@ -1,7 +1,7 @@
 Package: popgraph
 Type: Package
 Title: This is an R package that constructs and manipulates population graphs.
-Version: 1.0
+Version: 1.1
 Date: 2013-03-06
 Author: Rodney J. Dyer
 Maintainer: Rodney J. Dyer <rjdyer@vcu.edu>
@@ -22,7 +22,6 @@ Imports:
     MASS
 Suggests:
     maps,
-    GGally,
     fields
 Collate:
     'congruence_topology.R'

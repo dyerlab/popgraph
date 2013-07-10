@@ -37,7 +37,7 @@ geom_popgraph_edgeset<- function( mapping=NULL, graph=NULL, ... ) {
   if( is.null(mapping$x) | is.null(mapping$y))
     stop("To plot a graph, you need coordinates and they must be attributes of the vertices in the graph.")
   
-  
+  X1 <- X2 <- Y1 <- Y2 <- size <- x <- y <- color <- colour <- NULL
   
   x <- get.vertex.attribute(graph,mapping$x)
   y <- get.vertex.attribute(graph,mapping$y)

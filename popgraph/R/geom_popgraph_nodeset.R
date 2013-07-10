@@ -42,7 +42,7 @@ geom_popgraph_nodeset<- function( mapping=NULL, graph=NULL, ... ) {
       stop(paste("Aesthetic mapping variable ",key," was not found in the vertex attributes of this graph",sep=""))
   }
   
-
+  x <- y <- color <- colour <- size <- NULL
   
   df <- data.frame( x=get.vertex.attribute(graph,mapping$x), 
                     y=get.vertex.attribute(graph,mapping$y),
