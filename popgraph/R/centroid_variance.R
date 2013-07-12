@@ -18,6 +18,7 @@ centroid_variance <- function( x, grouping ){
   K <- length(grps)
   ret <- rep(NA,K)
   names(ret) <- grps
+
   
   for( i in 1:K ){
     xp <- x[ grouping == grps[i],]
