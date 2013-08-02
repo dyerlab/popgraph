@@ -5,6 +5,11 @@ This is an R package for creating and manipulating population graph objects usef
 
 For a complete overview of the package, see the full documentation at http://dyerlab.github.io/popgraph/
 
+To install the most recent version of this package, 
+
+require(devtools)
+install_github("popgraph","dyerlab")
+
 
 If you would like to contribute to this package or have any questions regarding its construction, use, or additional functionalities, please contact [Rodney J. Dyer](mailto:rjdyer@vcu.edu) or visit his lab page http://dyerlab.bio.vcu.edu
 
