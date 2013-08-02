@@ -20,12 +20,12 @@ popgraph/inst/doc/Popgraph.md
 popgraph.Rcheck
 popgraph_*.tar.gz
 popgraph_*.tgz
-popgraph/man/
-popgraph/inst/doc/figure/
-popgraph/inst/doc/Popgraph-concordance.tex
-popgraph/inst/doc/Popgraph.log
-popgraph/inst/doc/Popgraph.pdf
-popgraph/inst/doc/Popgraph.tex
-popgraph/inst/doc/Popgraph.synctex.gz
+man/
+inst/doc/figure/
+inst/doc/Popgraph-concordance.tex
+inst/doc/Popgraph.log
+inst/doc/Popgraph.pdf
+inst/doc/Popgraph.tex
+inst/doc/Popgraph.synctex.gz
 
 
