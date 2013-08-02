@@ -1,0 +1,34 @@
+\name{to_matrix}
+\alias{to_matrix}
+\title{Matrix conversion for Population Graph}
+\usage{
+  to_matrix(x,
+    mode = c("adjacency", "shortest path", "edge weight")[1],
+    ...)
+}
+\arguments{
+  \item{x}{An object of type \code{population_graph}}
+
+  \item{mode}{The kind of matrix to make.  At present, the
+  following types are available: \itemize{
+  \item{adjacency}{A binary matrix representing the pairs
+  of connected nodes (default)} \item{shortest path}{The
+  shortest path between all nodes.} \item{edge
+  weight}{Similar to the adjacency matrix but using edge
+  weights instead of binary values} }}
+
+  \item{...}{Optional arguemnts passed on to the distance
+  functions.}
+}
+\value{
+  A matrix (KxK) in size (where K is the number of nodes)
+}
+\description{
+  This function translates a Population to a matrix
+  representing either the adjacency structure, the shortest
+  path, or edge weights.
+}
+\author{
+  Rodney J. Dyer <rjdyer@vcu.edu>
+}
+
