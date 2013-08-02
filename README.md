@@ -7,7 +7,7 @@ For a complete overview of the package, see the full documentation at http://dye
 
 To install the most recent version of this package, 
 
-require(devtools)
+require(devtools)  
 install_github("popgraph","dyerlab")
 
 
