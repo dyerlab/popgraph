@@ -1,5 +1,7 @@
 # History files
 .Rhistory
+.DS_Store
+popgraph.Rproj
 
 # Ignore the look of the readme markup
 README.html
