@@ -1,6 +1,9 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
+<<<<<<< HEAD
 .Rhistory
 .gitignore
 .Rbuildignore
 popgraph.Rproj
+=======
+>>>>>>> f966e3ac6472071ea08fcf409e5ccae6e52e8105
