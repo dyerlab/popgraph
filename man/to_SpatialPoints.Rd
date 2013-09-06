@@ -1,27 +1,32 @@
 \name{to_SpatialPoints}
 \alias{to_SpatialPoints}
-\title{Extract nodes as SpatialPoints}
+\title{Translate object into a SpatialPoints object}
 \usage{
-  to_SpatialPoints(graph, longitude = "Longitude",
-    latitude = "Latitude")
+  to_SpatialPoints(x, stratum = "Name",
+    longitude = "Longitude", latitude = "Latitude", ...)
 }
 \arguments{
-  \item{graph}{An object of type \code{population_graph}}
+  \item{x}{The object containin coordinates.}
+
+  \item{stratum}{The name of the variable in \code{x} that
+  represents the stratum to be used as points.}
 
   \item{longitude}{The key for the attribute representing
   Longitude (default="Longitude")}
 
   \item{latitude}{The key for the attribute representing
   Latitude (default="Latitude")}
+
+  \item{...}{Optional arguments passed to overriden
+  objects}
 }
 \value{
   An object of type SpatialPoints
 }
 \description{
-  Returns spatial points object representing location of
-  the nodes in the graph.
+  Returns spatial points object
 }
 \author{
-  Rodney J. Dyer <rjdyer@vcu.edu>
+  Rodney J. Dyer \email{rjdyer@vcu.edu}
 }
 

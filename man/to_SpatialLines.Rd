@@ -3,7 +3,7 @@
 \title{Converts edge set to SpatialLines object}
 \usage{
   to_SpatialLines(graph, latitude = "Latitude",
-    longitude = "Longitude")
+    longitude = "Longitude", ...)
 }
 \arguments{
   \item{graph}{An object of type \code{population_graph}.
@@ -15,6 +15,8 @@
 
   \item{longitude}{The name of the Longitude attribute
   (default="Longitude")}
+
+  \item{...}{Ignored}
 }
 \value{
   A \code{SpatialLines} object

@@ -6,9 +6,6 @@ popgraph.Rproj
 # Ignore the look of the readme markup
 README.html
 
-# Ignore the intermediary doc files from Rmd
-popgraph/inst/doc/Popgraph.html
-popgraph/inst/doc/Popgraph.md
 
 # Example code in package build process
 *-Ex.R
@@ -20,12 +17,8 @@ popgraph/inst/doc/Popgraph.md
 popgraph.Rcheck
 popgraph_*.tar.gz
 popgraph_*.tgz
-man/*.Rd
-inst/doc/figure/
-inst/doc/Popgraph-concordance.tex
-inst/doc/Popgraph.log
-inst/doc/Popgraph.pdf
-inst/doc/Popgraph.tex
-inst/doc/Popgraph.synctex.gz
+*.Rd
+
+
 
 
