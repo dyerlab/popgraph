@@ -20,7 +20,7 @@ popgraph/inst/doc/Popgraph.md
 popgraph.Rcheck
 popgraph_*.tar.gz
 popgraph_*.tgz
-man/
+man/*.Rd
 inst/doc/figure/
 inst/doc/Popgraph-concordance.tex
 inst/doc/Popgraph.log
