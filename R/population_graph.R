@@ -15,7 +15,7 @@ population_graph <- function( x, groups, alpha=0.05, tol=1.0e-4, nboot=0 ) {
   
   if( missing(x) )
     stop("You must use a matrix to pass data to this function, object to create a 'PopulationGraph'" )
-  if( is(x,"data.frame") ) )
+  if( is(x,"data.frame") ) 
     stop("The data passed to population_graph() needs to be a numeric matrix. If you are using gstudio, convert your data first using to_mv().")
   if( missing( groups) )
     stop("You need to specify which 'groups' the nodes will represent.")

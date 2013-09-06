@@ -6,11 +6,11 @@
 #'  be decroated with latitude and longitude attributes.  
 #' @param latitude The name of the Latitude attribute (default="Latitude")
 #' @param longitude The name of the Longitude attribute (default="Longitude")
+#' @param ... Ignored
 #' @return A \code{SpatialLines} object
 #' @author Rodney J. Dyer <rjdyer@@vcu.edu>
 #' @export
-to_SpatialLines <- function( graph, latitude="Latitude", longitude="Longitude") {
-  require(sp)
+to_SpatialLines <- function( graph, latitude="Latitude", longitude="Longitude", ...) {
   if( !inherits(graph,"population_graph"))
     stop("This function requires a population_graph object to function")
   

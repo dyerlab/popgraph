@@ -1,18 +1,19 @@
-#' Extract nodes as SpatialPoints
+#' Translate object into a SpatialPoints object
 #' 
-#' Returns spatial points object representing location of the 
-#'  nodes in the graph.
-#' @param graph An object of type \code{population_graph}
+#' Returns spatial points object
+#' @param x The object containin coordinates.
+#' @param stratum The name of the variable in \code{x} that represents the
+#'  stratum to be used as points.
 #' @param longitude The key for the attribute representing Longitude (default="Longitude")
 #' @param latitude The key for the attribute representing Latitude (default="Latitude")
+#' @param ... Optional arguments passed to overriden objects
 #' @return An object of type SpatialPoints
-#' @author Rodney J. Dyer <rjdyer@@vcu.edu>
+#' @author Rodney J. Dyer \email{rjdyer@@vcu.edu}
 #' @export
-to_SpatialPoints <- function( graph, longitude="Longitude", latitude="Latitude") {
+to_SpatialPoints<- function( x, stratum="Name", longitude="Longitude", latitude="Latitude", ...) {
   if( !inherits(graph,"population_graph"))
     stop("This function requires a population_graph object to function")
-  
-  require( sp )
+
   
   vertex.attr <- list.vertex.attributes( graph )
   if( !(latitude %in% vertex.attr ) | !(longitude %in% vertex.attr) )
