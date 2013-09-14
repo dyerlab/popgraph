@@ -2,7 +2,7 @@
 \alias{decorate_graph}
 \title{Merge data into popgraph node-wise}
 \usage{
-  decorate_graph(graph, df, meta.stratum = "Population")
+  decorate_graph(graph, df, stratum = "Population")
 }
 \arguments{
   \item{graph}{An object of type \code{igraph} to populate}
@@ -11,9 +11,9 @@
   Node column that is the same as the V(graph)$name
   values.}
 
-  \item{meta.stratum}{The column name of node lables to
-  match up with graph.stratum (default 'Population') to be
-  matched with V(graph)$name attribute}
+  \item{stratum}{The column name of node lables to match up
+  with graph.stratum (default 'Population') to be matched
+  with V(graph)$name attribute}
 }
 \value{
   A populated igraph object with as much of the metadata in

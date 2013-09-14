@@ -1,3 +1,9 @@
+version 1.2
+---------------
+* [FIX] Changed geom_popgraph_edgeset() to geom_edgeset()
+* [FIX] Changed geom_popgraph_nodeset() to geom_nodeset()
+* [FIX] Changed decorate_popgraph() argument 'meta.stratum' to 'stratum'
+
 version 1.1
 ---------------
 * [ADD] Added function geom_popgraph_edgeset() to plot popgraph directly in a ggplot()

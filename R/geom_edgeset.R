@@ -16,9 +16,9 @@
 #' V(graph)$x <- runif(4)
 #' V(graph)$y <- runif(4)
 #' require(ggplot2)
-#' ggplot() + geom_popgraph_edgeset( aes(x=x,y=y), graph )
-#' ggplot() + geom_popgraph_edgeset( aes(x=x,y=y), graph, color="darkblue" )
-geom_popgraph_edgeset<- function( mapping=NULL, graph=NULL, ... ) {
+#' ggplot() + geom_edgeset( aes(x=x,y=y), graph )
+#' ggplot() + geom_edgeset( aes(x=x,y=y), graph, color="darkblue" )
+geom_edgeset<- function( mapping=NULL, graph=NULL, ... ) {
   
   # catch errors with missing 
   if( is.null(mapping))

@@ -23,8 +23,8 @@ require(ggplot2)
 layout <- layout.fruchterman.reingold( lopho )
 V(lopho)$x <- layout[,1]
 V(lopho)$y <- layout[,2]
-p <- ggplot() + geom_popgraph_edgeset( aes(x,y), lopho)
-p <- p + geom_popgraph_nodeset( aes(x,y), lopho )
+p <- ggplot() + geom_edgeset( aes(x,y), lopho)
+p <- p + geom_nodeset( aes(x,y), lopho )
 p
 p + theme_empty()
 }

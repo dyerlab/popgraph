@@ -12,7 +12,7 @@ test_that("testing", {
   
   expect_that(decorate_graph( g, df ), throws_error() )
   
-  g.df <- decorate_graph( g, df, meta.stratum="name" )
+  g.df <- decorate_graph( g, df, id="name" )
       
   expect_that( g.df, is_a("igraph") )
   expect_that( g.df, is_a("population_graph"))

@@ -18,10 +18,10 @@
 #' V(graph)$x <- runif(4)
 #' V(graph)$y <- runif(4)
 #' require(ggplot2)
-#' ggplot() + geom_popgraph_nodeset( aes(x=x,y=y), graph )
+#' ggplot() + geom_nodeset( aes(x=x,y=y), graph )
 #' V(graph)$group <- c("A","A","B","B")
-#' ggplot() + geom_popgraph_nodeset( aes(x=x,y=y,color=group), graph, size=4 )
-geom_popgraph_nodeset<- function( mapping=NULL, graph=NULL, ... ) {
+#' ggplot() + geom_nodeset( aes(x=x,y=y,color=group), graph, size=4 )
+geom_nodeset<- function( mapping=NULL, graph=NULL, ... ) {
   
   # catch errors with missing 
   if( is.null(mapping))
