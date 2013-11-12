@@ -11,17 +11,17 @@
 #' @author Rodney J. Dyer \email{rjdyer@@vcu.edu}
 #' @export
 to_SpatialPoints<- function( x, stratum="Name", longitude="Longitude", latitude="Latitude", ...) {
-  if( !inherits(graph,"population_graph"))
+  if( !inherits(x,"population_graph"))
     stop("This function requires a population_graph object to function")
 
   
-  vertex.attr <- list.vertex.attributes( graph )
+  vertex.attr <- list.vertex.attributes( x )
   if( !(latitude %in% vertex.attr ) | !(longitude %in% vertex.attr) )
     stop("Your graph should have Latitude and Longitude in it before we can make it a Spatial* object.")
   
-  coords <- cbind( x=get.vertex.attribute( graph, longitude ),
-                   y=get.vertex.attribute( graph, latitude) )
-  rownames( coords ) <- V(graph)$name 
+  coords <- cbind( x=get.vertex.attribute( x, longitude ),
+                   y=get.vertex.attribute( x, latitude) )
+  rownames( coords ) <- V(x)$name 
   pts <- SpatialPoints(coords)
   
   return( pts )

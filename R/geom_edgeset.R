@@ -5,6 +5,8 @@
 #' @param mapping The aesthetic mapping as an \code{aes()} object.  This aesthetic
 #'  must at least have values for x and y
 #' @param graph The popgraph/igraph object to be plot
+#' @param directed A flag indicating that you should only plot the edge 
+#'  with the largest weight if more than one edge connects nodes.
 #' @param ... Largely ignored.
 #' @return A formatted geom_segment object for addition to a ggplot()
 #' @author Rodney J. Dyer <rjdyer@@vcu.edu>
@@ -18,13 +20,34 @@
 #' require(ggplot2)
 #' ggplot() + geom_edgeset( aes(x=x,y=y), graph )
 #' ggplot() + geom_edgeset( aes(x=x,y=y), graph, color="darkblue" )
-geom_edgeset<- function( mapping=NULL, graph=NULL, ... ) {
+#' require(grid)
+#' ggplot() + geom_edgeset( aes(x=x,y=y), graph, directed=TRUE, arrow=arrow(length=unit(0.5,"cm")) )
+geom_edgeset<- function( mapping=NULL, graph=NULL, directed=FALSE, ... ) {
   
   # catch errors with missing 
   if( is.null(mapping))
     stop("You need at least aes(x,y) for aesthetic mapping in this function.")
   if( is.null(graph))
     stop("You cannot plot a graph without a graph...")
+  
+  # take care of directed.
+  if( directed ) {
+    d <- get.adjacency(graph,type="both",attr="weight",sparse=FALSE)
+    K <- length( V(graph) )
+    for( i in 1:K ){
+      for( j in i:K ) {
+        if( d[i,j] > 0 & d[j,i] > 0 ){
+          if( d[i,j] > d[j,i] )
+            d[j,i] <- 0
+          else
+            d[i,j] <- 0
+        }
+      }
+    }
+    g <- graph.adjacency(d, mode="directed",weighted=TRUE )
+    df <- to_data.frame( graph )
+    graph <- decorate_graph(g, df, stratum="name" ) 
+  }
   
   # grab mapping labels not in the vertex attributes
   edge.attr <- c(list.edge.attributes(graph),list.vertex.attributes(graph))
@@ -53,6 +76,12 @@ geom_edgeset<- function( mapping=NULL, graph=NULL, ... ) {
   df <- data.frame( coords[edgelist[,1],2:3], coords[edgelist[,2],2:3] )
   colnames(df) <- c("X1","Y1","X2","Y2")
   
+  if( !is.null(mapping$size) & !is.null(mapping$color)) {
+    df$size <- get.edge.attribute(graph,mapping$size)
+    df$color <- get.edge.attribute( graph, mapping$color )
+    
+    ret <- geom_segment( aes(x=X1,y=Y1,xend=X2,yend=Y2,size=size,color=color), data=df, show_guide=FALSE, ... )
+  }
   if( !is.null(mapping$size) ) {
     df$size <- get.edge.attribute(graph,mapping$size)
     ret <- geom_segment( aes(x=X1,y=Y1,xend=X2,yend=Y2,size=size), data=df, show_guide=FALSE, ... )

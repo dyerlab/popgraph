@@ -22,7 +22,8 @@ Imports:
 Suggests:
     testthat,
     maps,
-    fields
+    fields,
+    grid
 Collate:
     'as_population_graph.R'
     'centroid_distance.R'
@@ -45,3 +46,4 @@ Collate:
     'to_matrix.R'
     'to_pgraph.R'
     'write_population_graph.R'
+    'to_data.frame.R'
