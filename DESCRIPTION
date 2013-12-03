@@ -1,7 +1,7 @@
 Package: popgraph
 Type: Package
 Title: This is an R package that constructs and manipulates population graphs.
-Version: 1.2
+Version: 1.3
 Date: 2013-06-12
 Author: Rodney J. Dyer
 Maintainer: Rodney J. Dyer <rjdyer@vcu.edu>
