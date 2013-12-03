@@ -1,14 +1,14 @@
-#' Convience function to plot edges from \code{population_graph}
+#' Convience function to plot edges from \code{popgraph}
 #' 
 #' This is a quick convienence function for plotting nodes and edges 
 #'   on a normal R plot by iterating through edges and connecting
 #'   nodes.
-#' @param graph An object of type \code{population_graph}
+#' @param graph An object of type \code{popgraph}
 #' @return NULL
 #' @author Rodney J. Dyer <rjdyer@@vcu.edu>
 #' @export
-overlay_population_graph <- function( graph ){
-  if( !is(graph,"population_graph"))
+overlay_popgraph <- function( graph ){
+  if( !is(graph,"popgraph"))
     stop("This function only works by with a population graph object")
   if( !("Longitude" %in% list.vertex.attributes(graph)))
     stop("This function requires 'Longitude' to be a vertex attributed.")

@@ -6,7 +6,7 @@ test_that("tests", {
   a <- a + t(a)
   rownames(a) <- colnames(a) <- as.character(LETTERS[1:4])
   
-  graph <- as.population_graph( a )
+  graph <- as.popgraph( a )
   
   expect_that( to_pgraph(FALSE), throws_error() )
 

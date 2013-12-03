@@ -11,12 +11,12 @@
 #' @return An object of type \code{popgraph}.
 #' @export
 #' @author Rodney J. Dyer <rjdyer@@vcu.edu>
-population_graph <- function( x, groups, alpha=0.05, tol=1.0e-4, nboot=0 ) {
+popgraph <- function( x, groups, alpha=0.05, tol=1.0e-4, nboot=0 ) {
   
   if( missing(x) )
     stop("You must use a matrix to pass data to this function, object to create a 'PopulationGraph'" )
   if( is(x,"data.frame") ) 
-    stop("The data passed to population_graph() needs to be a numeric matrix. If you are using gstudio, convert your data first using to_mv().")
+    stop("The data passed to popgraph() needs to be a numeric matrix. If you are using gstudio, convert your data first using to_mv().")
   if( missing( groups) )
     stop("You need to specify which 'groups' the nodes will represent.")
   if(!inherits(groups, "factor"))
@@ -109,10 +109,18 @@ population_graph <- function( x, groups, alpha=0.05, tol=1.0e-4, nboot=0 ) {
   
   for(i in seq(1,K)) for(j in seq(1,K)) if(i!=j) 
     SRI[i,j] <- -1*RI[i,j]/sqrt( RI[i,i]*RI[j,j])
-  for(i in seq(1,K)) for(j in seq(1,K)) if(i!=j) {
-    EED[i,j] = -N * log(1-SRI[i,j]^2)
-    EdgeStr[i,j] = -0.5 * log(1-SRI[i,j]^2)
-  }  
+  
+  SRI <- 1-SRI^2
+  SRI[ SRI < 0 ] <- 0
+  SRI <- -N *log( SRI )
+  EdgeStr <- -0.5 * log(SRI)
+  
+#  for(i in seq(1,K)) for(j in seq(1,K)) if(i!=j) {
+#    if( SRI[i,j]^2 > 1 ) {
+#      EED[i,j] = -N * log(1-SRI[i,j]^2)
+#      EdgeStr[i,j] = -0.5 * log(1-SRI[i,j]^2)
+#    }   
+#  }  
   D[ EED<=critVal ] <- 0
   
   graph <- graph.adjacency(D,mode="undirected",weighted=TRUE,diag=FALSE)
@@ -134,7 +142,7 @@ population_graph <- function( x, groups, alpha=0.05, tol=1.0e-4, nboot=0 ) {
     warning("bootstrap is not currently available.")
   }
 
-  class( graph ) <- c("igraph", "population_graph")
+  class( graph ) <- c("igraph", "popgraph")
   
   return( graph )
 }

@@ -2,7 +2,7 @@
 #' 
 #' This is a convienence function that takes the edge set and returns a 
 #'  SpatialLines object.
-#' @param graph An object of type \code{population_graph}. This graph must already
+#' @param graph An object of type \code{popgraph}. This graph must already
 #'  be decroated with latitude and longitude attributes.  
 #' @param latitude The name of the Latitude attribute (default="Latitude")
 #' @param longitude The name of the Longitude attribute (default="Longitude")
@@ -11,8 +11,8 @@
 #' @author Rodney J. Dyer <rjdyer@@vcu.edu>
 #' @export
 to_SpatialLines <- function( graph, latitude="Latitude", longitude="Longitude", ...) {
-  if( !inherits(graph,"population_graph"))
-    stop("This function requires a population_graph object to function")
+  if( !inherits(graph,"popgraph"))
+    stop("This function requires a popgraph object to function")
   
   names <- V(graph)$name
   

@@ -13,8 +13,8 @@ test_that("testing", {
   
   rownames(A) <- colnames(A) <- rownames(B) <- colnames(B) <- LETTERS[1:4]
   
-  graph1 <- as.population_graph(A)
-  graph2 <- as.population_graph(B)
+  graph1 <- as.popgraph(A)
+  graph2 <- as.popgraph(B)
   
   ret <- test_congruence(graph1,graph2)
   expect_that( ret, is_a("htest"))

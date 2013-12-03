@@ -8,11 +8,11 @@
 #'  with an extra class property)
 #' @author Rodney J. Dyer <rjdyer@@vcu.edu>
 #' @export
-read.population_graph <- function( file, sep="\t" ) { 
+read.popgraph <- function( file, sep="\t" ) { 
     
   # load in the raw stuff
   raw <- read.table( file,header=FALSE, stringsAsFactors=FALSE,sep=sep,fill=TRUE)
-  raw
+  
   
   # set up the adjacency matrix
   Knode <- as.numeric(raw[1,1])
@@ -44,7 +44,7 @@ read.population_graph <- function( file, sep="\t" ) {
   V(graph)$size <- sizes 
   V(graph)$color <- colors
   
-  class(graph) <- c("igraph","population_graph")
+  class(graph) <- c("igraph","popgraph")
   return( graph )
   
 }

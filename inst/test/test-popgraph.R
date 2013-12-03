@@ -1,4 +1,4 @@
-context("population_graph.R")
+context("popgraph.R")
 
 test_that("testing", {
 

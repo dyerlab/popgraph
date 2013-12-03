@@ -1,8 +1,8 @@
 #' Convience function for file exports
 #' 
 #' This function is a chokepoint for exporting
-#'  \code{population_graph} objects to other formats.
-#' @param graph An object of type \code{population_graph}.
+#'  \code{popgraph} objects to other formats.
+#' @param graph An object of type \code{popgraph}.
 #' @param file The path to save the graph into.
 #' @param format The type of output file to use.  Options are:
 #'  \itemize{
@@ -20,10 +20,10 @@
 #' @return Nothing 
 #' @export
 #' @author Rodney J. Dyer <rjdyer@@vcu.edu>
-write.population_graph <- function(graph,file,format="pgraph",...){
+write.popgraph <- function(graph,file,format="pgraph",...){
   
-  if(!is(graph,"population_graph"))
-    stop("This requires a population_graph object")
+  if(!is(graph,"popgraph"))
+    stop("This requires a popgraph object")
   
   if( !(format %in% c("json","kml","graphml","html","pajek","pgraph","adjacency","paths","weights")))
     stop("Unrecognized output format.")

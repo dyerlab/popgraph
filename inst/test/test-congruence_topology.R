@@ -13,12 +13,12 @@ test_that("testing", {
   
   rownames(A) <- colnames(A) <- rownames(B) <- colnames(B) <- LETTERS[1:4]
   
-  graph1 <- as.population_graph(A)
-  graph2 <- as.population_graph(B)
+  graph1 <- as.popgraph(A)
+  graph2 <- as.popgraph(B)
   
   cong <- congruence_topology(graph1,graph2)
   expect_that( cong, is_a("igraph") )
-  expect_that( cong, is_a("population_graph"))
+  expect_that( cong, is_a("popgraph"))
   expect_that( length(V(cong)), equals(4) )
   expect_that( length(E(cong)), equals(3) )
 }

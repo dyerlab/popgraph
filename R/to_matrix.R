@@ -2,7 +2,7 @@
 #' 
 #' This function translates a Population to a matrix representing either 
 #'  the adjacency structure, the shortest path, or edge weights.
-#' @param x An object of type \code{population_graph}
+#' @param x An object of type \code{popgraph}
 #' @param mode The kind of matrix to make.  At present, the following types are
 #'  available:
 #'    \itemize{ 
@@ -17,8 +17,8 @@
 #' @author Rodney J. Dyer <rjdyer@@vcu.edu> 
 to_matrix <- function( x, mode=c("adjacency","shortest path","edge weight")[1], ... ) { 
   
-  if( !inherits(x,"population_graph"))
-    stop(paste("This function requires a population_graph object to function. You passed a",class(x)))
+  if( !inherits(x,"popgraph"))
+    stop(paste("This function requires a popgraph object to function. You passed a",class(x)))
   
   ret <- NULL
   if( mode=="shortest path")

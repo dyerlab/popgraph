@@ -1,10 +1,12 @@
-context("read_population_graph.R")
+context("read.popgraph.R")
 
 test_that("testing", {
 
   file <- system.file("extdata","lopho.pgraph",package="popgraph")
+  if( file == "")
+    file <- "/Users/rodney/Documents/Dropbox/R/popgraph/popgraph/inst/extdata/lopho.pgraph"
   
-  graph <- read.population_graph( file )
+  graph <- read.popgraph( file )
   
   
   expect_that( graph, is_a("igraph") )

@@ -1,12 +1,12 @@
-#' Converts an object of type matrix or igraph into \code{population_graph}
+#' Converts an object of type matrix or igraph into \code{popgraph}
 #' 
 #' This is a simple conversion routine for \code{matrix} or \code{igraph} 
-#'  objects into \code{population_graph} objects
+#'  objects into \code{popgraph} objects
 #' @param graph An object of type \code{matrix} or \code{igraph}
-#' @return An object of type \code{population_graph}
+#' @return An object of type \code{popgraph}
 #' @export
 #' @author Rodney J. Dyer <rjdyer@@vcu.edu>
-as.population_graph <- function(graph) {
+as.popgraph <- function(graph) {
   ret <- NULL
   if( is(graph,"matrix")) {
     ret <- graph.adjacency( graph, mode="undirected",weighted=TRUE) 
@@ -22,7 +22,7 @@ as.population_graph <- function(graph) {
   if( is.null(ret) )
     stop("Must pass either an igraph or matrix item to this function.")
   
-  class(ret) <- c("population_graph","igraph")
+  class(ret) <- c("popgraph","igraph")
   return(ret)
     
 }

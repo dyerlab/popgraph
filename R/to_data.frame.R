@@ -1,14 +1,14 @@
-#' Converts \code{population_graph} to \code{data.frame} based upon node attributes
+#' Converts \code{popgraph} to \code{data.frame} based upon node attributes
 #' 
 #' This is a quick conversion of vertex attributes to a \code{data.frame}, essentially
 #'  the reverse operation as \code{decorate_graph} function.
-#' @param x The \code{population_graph} to grab stuff from.
+#' @param x The \code{popgraph} to grab stuff from.
 #' @param ... Ignored (generally).
 #' @return An object of type \code{data.frame} with all the node attributes.
 #' @author Rodney J. Dyer \email{rjdyer@@vcu.edu}
 #' @export
 to_data.frame <- function( x, ... ){
-  if( !is(x,"population_graph") & !(is(x,"igraph")))
+  if( !is(x,"popgraph") & !(is(x,"igraph")))
     stop("What are you passing to to_data.frame()?")
   
   cols <- list.vertex.attributes( x )

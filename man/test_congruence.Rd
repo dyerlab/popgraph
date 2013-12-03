@@ -7,10 +7,10 @@
 }
 \arguments{
   \item{graph1}{An object of type \code{igraph} or
-  \code{population_graph}}
+  \code{popgraph}}
 
   \item{graph2}{An object of type \code{igraph} or
-  \code{population_graph}}
+  \code{popgraph}}
 
   \item{method}{An option on how congruence is to be
   estimated possible values are 'distance' (a measure of

@@ -5,7 +5,7 @@
   to_pgraph(graph, file)
 }
 \arguments{
-  \item{graph}{An object of type \code{population_graph}}
+  \item{graph}{An object of type \code{popgraph}}
 
   \item{file}{The name and location of where the *.pgraph
   file is to be saved.  If ommitted, this function will

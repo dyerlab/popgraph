@@ -3,8 +3,8 @@
 #' This function makes the shortest path matrices for both
 #'  graphs and determines the correlation between pairwise
 #'  distance.
-#' @param graph1 An object of type \code{igraph} or \code{population_graph}
-#' @param graph2 An object of type \code{igraph} or \code{population_graph}
+#' @param graph1 An object of type \code{igraph} or \code{popgraph}
+#' @param graph2 An object of type \code{igraph} or \code{popgraph}
 #' @param method An option on how congruence is to be estimated
 #'  possible values are 'distance' (a measure of similarity in 
 #'  separation of nodes independent of connectivity, the default) 

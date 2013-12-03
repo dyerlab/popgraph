@@ -9,8 +9,8 @@
 #' @export
 to_json <- function( graph, file ) {
   
-  if( !inherits(graph,"population_graph"))
-    stop("This function requires a population_graph object to function")
+  if( !inherits(graph,"popgraph"))
+    stop("This function requires a popgraph object to function")
   
   # make vector 
   quotify <- function( df ){

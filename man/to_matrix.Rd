@@ -7,7 +7,7 @@
     ...)
 }
 \arguments{
-  \item{x}{An object of type \code{population_graph}}
+  \item{x}{An object of type \code{popgraph}}
 
   \item{mode}{The kind of matrix to make.  At present, the
   following types are available: \itemize{

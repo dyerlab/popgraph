@@ -11,8 +11,8 @@
 #' @author Rodney J. Dyer \email{rjdyer@@vcu.edu}
 #' @export
 to_SpatialPoints<- function( x, stratum="Name", longitude="Longitude", latitude="Latitude", ...) {
-  if( !inherits(x,"population_graph"))
-    stop("This function requires a population_graph object to function")
+  if( !inherits(x,"popgraph"))
+    stop("This function requires a popgraph object to function")
 
   
   vertex.attr <- list.vertex.attributes( x )

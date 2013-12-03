@@ -3,7 +3,7 @@
 #' This is a simple function that takes the graph and
 #'  converts it into a *.pgraph file for visualization 
 #'  in other software.
-#' @param graph An object of type \code{population_graph}
+#' @param graph An object of type \code{popgraph}
 #' @param file The name and location of where the *.pgraph file is to be saved.
 #'  If ommitted, this function will return a single text file.
 #' @return Nothing if passed a file or the raw text of the *.pgraph file if
@@ -11,8 +11,8 @@
 #' @export
 #' @author Rodney J. Dyer <rjdyer@@vcu.edu>
 to_pgraph <- function( graph, file ) {
-  if( !is(graph,"population_graph") )
-    stop("This function only works using a population_graph object.")
+  if( !is(graph,"popgraph") )
+    stop("This function only works using a popgraph object.")
 
   K <- length(V(graph))
   L <- length(E(graph))

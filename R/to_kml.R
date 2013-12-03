@@ -9,7 +9,7 @@
 #' @author Rodney J. Dyer <rjdyer@@vcu.edu>
 #' @export
 to_kml <- function( graph, file ) {
-  if( !inherits( graph, "population_graph") )
+  if( !inherits( graph, "popgraph") )
     stop("Cannot save a kml file from a popgraph that is not made from a popgraph...")
 
   if( !("Latitude" %in% list.vertex.attributes(graph) ))

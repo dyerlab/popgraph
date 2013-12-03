@@ -10,7 +10,7 @@
 #' @author Rodney J. Dyer <rjdyer@@vcu.edu>
 #' @export
 to_html <- function( graph, file ) {
-  if( !inherits( graph, "population_graph") )
+  if( !inherits( graph, "popgraph") )
     stop("Cannot save a html file from a popgraph that is not made from a popgraph...")
   
   heading <- system.file("extdata","d3header.html",package="popgraph")

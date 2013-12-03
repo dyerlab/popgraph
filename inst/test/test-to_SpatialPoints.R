@@ -7,7 +7,7 @@ test_that("testing", {
   
   rownames(a) <- c("Olympia","St. Louis", "Ames","Richmond")
   
-  graph <- as.population_graph( a )
+  graph <- as.popgraph( a )
   
   expect_that( to_SpatialPoints( "bob" ), throws_error() )
   expect_that( to_SpatialPoints( graph ), throws_error() )

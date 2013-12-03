@@ -1,4 +1,4 @@
-context("decorate.popgraph.R")
+context("decorate_popgraph.R")
 
 test_that("testing", {
   
@@ -6,16 +6,16 @@ test_that("testing", {
   A[1,2] <- A[2,3] <- A[1,3] <- A[3,4] <- 1
   A <- A + t(A)
   rownames(A) <- colnames(A) <- LETTERS[1:4]
-  g <- as.population_graph( A )
+  g <- as.popgraph( A )
 
   df <- data.frame(name=LETTERS[1:4], Position=c(1,2,3,4))  
   
   expect_that(decorate_graph( g, df ), throws_error() )
   
-  g.df <- decorate_graph( g, df, id="name" )
+  g.df <- decorate_graph( g, df, stratum="name" )
       
   expect_that( g.df, is_a("igraph") )
-  expect_that( g.df, is_a("population_graph"))
+  expect_that( g.df, is_a("popgraph"))
 
   expect_that( V(g.df)$Bob, is_a("NULL") )
   
