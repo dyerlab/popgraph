@@ -34,7 +34,7 @@ Collate:
     'geom_nodeset.R'
     'overlay_popgraph.R'
     'popgraph-package.R'
-    'population_graph.R'
+    'popgraph.R'
     'read_popgraph.R'
     'test_congruence.R'
     'theme_empty.R'

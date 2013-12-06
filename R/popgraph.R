@@ -112,8 +112,9 @@ popgraph <- function( x, groups, alpha=0.05, tol=1.0e-4, nboot=0 ) {
   
   SRI <- 1-SRI^2
   SRI[ SRI < 0 ] <- 0
-  SRI <- -N *log( SRI )
-  EdgeStr <- -0.5 * log(SRI)
+  EED <- -N *log( SRI ) 
+  
+  #EdgeStr <- -0.5 * log(SRI)
   
 #  for(i in seq(1,K)) for(j in seq(1,K)) if(i!=j) {
 #    if( SRI[i,j]^2 > 1 ) {
