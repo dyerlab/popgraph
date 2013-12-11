@@ -104,7 +104,7 @@ popgraph <- function( x, groups, alpha=0.05, tol=1.0e-4, nboot=0 ) {
   
   # one MASS import
   SRI <- matrix(1,K,K)
-  RI <- MASS:::ginv(R)
+  RI <- MASS::ginv(R)
   EED <- matrix(0,K,K)
   
   for(i in seq(1,K)) for(j in seq(1,K)) if(i!=j) 
@@ -114,14 +114,14 @@ popgraph <- function( x, groups, alpha=0.05, tol=1.0e-4, nboot=0 ) {
   SRI[ SRI < 0 ] <- 0
   EED <- -N *log( SRI ) 
   
-  #EdgeStr <- -0.5 * log(SRI)
-  
+# EdgeStr <- -0.5 * log(SRI)
 #  for(i in seq(1,K)) for(j in seq(1,K)) if(i!=j) {
 #    if( SRI[i,j]^2 > 1 ) {
 #      EED[i,j] = -N * log(1-SRI[i,j]^2)
 #      EdgeStr[i,j] = -0.5 * log(1-SRI[i,j]^2)
 #    }   
 #  }  
+  
   D[ EED<=critVal ] <- 0
   
   graph <- graph.adjacency(D,mode="undirected",weighted=TRUE,diag=FALSE)

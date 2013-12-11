@@ -47,13 +47,13 @@ theme_empty <- function (base_size = 12, base_family = "Helvetica"){
     panel.border = element_blank(), 
     panel.grid.major = element_blank(), 
     panel.grid.minor = element_blank(), 
-    panel.margin = grid:::unit(0.25, "lines"), 
+    panel.margin = grid::unit(0.25, "lines"), 
     strip.background = element_blank(), 
     strip.text = element_blank(),
     strip.text.y = element_text(angle = -90), 
     plot.background = element_rect(colour = 'NA', fill = 'transparent'), 
     plot.title = element_text(size = base_size * 1.2), 
-    plot.margin = grid:::unit(c(1, 1, 0.5, 0.5), "lines"),
+    plot.margin = grid::unit(c(1, 1, 0.5, 0.5), "lines"),
     
     complete = TRUE)   # denotes that this is a complete theme function
 }
