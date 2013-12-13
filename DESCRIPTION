@@ -14,11 +14,12 @@ License: GPL (>= 2)
 LazyLoad: yes
 Depends:
     R (>= 2.15),
+    ggplot2,
     igraph
 Imports:
     MASS,
-    ggplot2,
-    sp
+    sp,
+    Matrix
 Suggests:
     testthat,
     maps,
@@ -32,6 +33,7 @@ Collate:
     'decorate_graph.R'
     'geom_edgeset.R'
     'geom_nodeset.R'
+    'ops_popgraph.R'
     'overlay_popgraph.R'
     'popgraph-package.R'
     'popgraph.R'

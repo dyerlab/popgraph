@@ -31,7 +31,4 @@ The users manual for {\bfseries popgraph} is located online in html format as it
 If you have any questions feel free to contact rjdyer@vcu.edu.
 
 
-
-
-
 \end{document}

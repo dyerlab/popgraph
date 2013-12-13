@@ -29,7 +29,7 @@
 #' @author Rodney J. Dyer <rjdyer@@vcu.edu>
 #' @docType package
 #' @keywords package
-#' @import sp ggplot2 
+#' @import sp ggplot2 igraph
 #' @name popgraph-package
 #' @rdname popgraph-package
 #'

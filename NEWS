@@ -1,5 +1,6 @@
 version 1.3
 ---------------
+* [ADD] added minus operator for popgraph objects to find differences in edge sets.
 * [FIX] changed all *population_graph() functions to *popgraph() for simplicity.
 * [FIX] fixed popgraph() to ignore issues where log(1-SRI) -> NaN due to very small values of SRI
 

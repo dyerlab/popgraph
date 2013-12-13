@@ -24,9 +24,13 @@ to_matrix <- function( x, mode=c("adjacency","shortest path","edge weight")[1], 
   if( mode=="shortest path")
     ret <- shortest.paths( x, ... )
   else if( mode=="adjacency")
-    ret <- get.adjacency( x, sparse=FALSE, ...) 
+    ret <- get.adjacency( x, sparse=FALSE, ...)  
   else if( mode=="edge weight")
     ret <- get.adjacency( x, attr="weight", sparse=FALSE,... ) 
+  
+  if( length( V(x)$name ))
+    rownames(ret) <- colnames(ret) <- V(x)$name 
+  
   return( ret )
 }
 
