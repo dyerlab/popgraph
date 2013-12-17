@@ -11,6 +11,7 @@
 #' @examples
 #' data(lopho)
 #' require(ggplot2)
+#' require(igraph)
 #' layout <- layout.fruchterman.reingold( lopho )
 #' V(lopho)$x <- layout[,1]
 #' V(lopho)$y <- layout[,2]

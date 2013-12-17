@@ -11,6 +11,7 @@
 #' @export
 #' @author Rodney J. Dyer \email{rjdyer@@vcu.edu}
 #' @examples
+#' library(igraph)
 #' e1 <- as.popgraph( graph.atlas(716) )
 #' e2 <- as.popgraph( graph.atlas(806) )
 #' e3 <- e1 - e2

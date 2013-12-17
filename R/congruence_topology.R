@@ -13,7 +13,7 @@
 congruence_topology <- function( graph1, graph2, warn.nonoverlap=TRUE ) {
   
   if( !inherits(graph1, "popgraph") | !inherits(graph2, "igraph") )
-    stop("congruence.topology() requires that you pass an igraph object.")
+    stop("congruence.topology() requires that you pass an igraph or popgraph object.")
   
   if( warn.nonoverlap & length(setdiff( V(graph1)$name, V(graph2)$name )))
     warning("These two topologies have non-overlapping node sets!  Careful on interpretation.")

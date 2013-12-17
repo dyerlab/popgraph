@@ -1,9 +1,11 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
 <<<<<<< HEAD
+.DS_Store
 .Rhistory
 .gitignore
 .Rbuildignore
+.git
 popgraph.Rproj
 
 README.md

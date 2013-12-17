@@ -14,12 +14,12 @@ License: GPL (>= 2)
 LazyLoad: yes
 Depends:
     R (>= 2.15),
-    ggplot2,
-    igraph
+    ggplot2
 Imports:
     MASS,
     sp,
-    Matrix
+    Matrix,
+    igraph
 Suggests:
     testthat,
     maps,

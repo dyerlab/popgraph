@@ -10,14 +10,13 @@
 #' @param ... Largely ignored.
 #' @return A formatted geom_segment object for addition to a ggplot()
 #' @author Rodney J. Dyer <rjdyer@@vcu.edu>
-#' @import igraph
 #' @export
 #' @examples
 #' a <- matrix( c(0,1,0,1,1,0,0,1,0,0,0,1,1,1,1,0),nrow=4)
 #' rownames(a) <- colnames(a) <- LETTERS[1:4]
 #' graph <- as.popgraph(a)
-#' V(graph)$x <- runif(4)
-#' V(graph)$y <- runif(4)
+#' igraph::V(graph)$x <- runif(4)
+#' igraph::V(graph)$y <- runif(4)
 #' require(ggplot2)
 #' ggplot() + geom_edgeset( aes(x=x,y=y), graph )
 #' ggplot() + geom_edgeset( aes(x=x,y=y), graph, color="darkblue" )
