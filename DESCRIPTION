@@ -2,7 +2,7 @@ Package: popgraph
 Type: Package
 Title: This is an R package that constructs and manipulates population graphs.
 Version: 1.3
-Date: 2013-06-12
+Date: 2013-12-17
 Author: Rodney J. Dyer
 Maintainer: Rodney J. Dyer <rjdyer@vcu.edu>
 Description: This is a generic package that produces "Population Graphs"
@@ -18,8 +18,8 @@ Depends:
 Imports:
     MASS,
     sp,
-    Matrix,
-    igraph
+    igraph,
+    Matrix
 Suggests:
     testthat,
     maps,
