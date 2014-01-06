@@ -2,7 +2,7 @@
 \alias{to_json}
 \title{Converts to json representation}
 \usage{
-  to_json(graph, file)
+to_json(graph, file)
 }
 \arguments{
   \item{graph}{An object of type \code{igraph}}
@@ -11,13 +11,13 @@
   missing)}
 }
 \value{
-  A textual json representation of the graph
+A textual json representation of the graph
 }
 \description{
-  This is a nice function that takes a graph structure and
-  converts it to a json format for use on the web.
+This is a nice function that takes a graph structure and
+converts it to a json format for use on the web.
 }
 \author{
-  Rodney J. Dyer <rjdyer@vcu.edu>
+Rodney J. Dyer <rjdyer@vcu.edu>
 }
 

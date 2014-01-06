@@ -2,7 +2,7 @@
 \alias{to_pgraph}
 \title{Converts graph to a pgraph file format}
 \usage{
-  to_pgraph(graph, file)
+to_pgraph(graph, file)
 }
 \arguments{
   \item{graph}{An object of type \code{popgraph}}
@@ -12,15 +12,15 @@
   return a single text file.}
 }
 \value{
-  Nothing if passed a file or the raw text of the *.pgraph
-  file if you do not provide a file object.
+Nothing if passed a file or the raw text of the *.pgraph
+file if you do not provide a file object.
 }
 \description{
-  This is a simple function that takes the graph and
-  converts it into a *.pgraph file for visualization in
-  other software.
+This is a simple function that takes the graph and converts
+it into a *.pgraph file for visualization in other
+software.
 }
 \author{
-  Rodney J. Dyer <rjdyer@vcu.edu>
+Rodney J. Dyer <rjdyer@vcu.edu>
 }
 

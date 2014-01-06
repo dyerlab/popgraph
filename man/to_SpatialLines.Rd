@@ -2,8 +2,7 @@
 \alias{to_SpatialLines}
 \title{Converts edge set to SpatialLines object}
 \usage{
-  to_SpatialLines(graph, latitude = "Latitude",
-    longitude = "Longitude", ...)
+to_SpatialLines(graph, latitude = "Latitude", longitude = "Longitude", ...)
 }
 \arguments{
   \item{graph}{An object of type \code{popgraph}. This
@@ -19,13 +18,13 @@
   \item{...}{Ignored}
 }
 \value{
-  A \code{SpatialLines} object
+A \code{SpatialLines} object
 }
 \description{
-  This is a convienence function that takes the edge set
-  and returns a SpatialLines object.
+This is a convienence function that takes the edge set and
+returns a SpatialLines object.
 }
 \author{
-  Rodney J. Dyer <rjdyer@vcu.edu>
+Rodney J. Dyer <rjdyer@vcu.edu>
 }
 

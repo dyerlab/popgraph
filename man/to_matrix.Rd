@@ -2,9 +2,7 @@
 \alias{to_matrix}
 \title{Matrix conversion for Population Graph}
 \usage{
-  to_matrix(x,
-    mode = c("adjacency", "shortest path", "edge weight")[1],
-    ...)
+to_matrix(x, mode = c("adjacency", "shortest path", "edge weight")[1], ...)
 }
 \arguments{
   \item{x}{An object of type \code{popgraph}}
@@ -21,14 +19,14 @@
   functions.}
 }
 \value{
-  A matrix (KxK) in size (where K is the number of nodes)
+A matrix (KxK) in size (where K is the number of nodes)
 }
 \description{
-  This function translates a Population to a matrix
-  representing either the adjacency structure, the shortest
-  path, or edge weights.
+This function translates a Population to a matrix
+representing either the adjacency structure, the shortest
+path, or edge weights.
 }
 \author{
-  Rodney J. Dyer <rjdyer@vcu.edu>
+Rodney J. Dyer <rjdyer@vcu.edu>
 }
 

@@ -3,9 +3,8 @@
 \alias{lopho}
 \title{Lophocereus population graph}
 \description{
-  This is the population graph for the Lophocereus data
-  that is discussed in Dyer & Nason (2004).
+This is the population graph for the Lophocereus data that
+is discussed in Dyer & Nason (2004).
 }
 \keyword{data}
-\keyword{datasets}
 

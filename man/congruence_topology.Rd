@@ -2,8 +2,7 @@
 \alias{congruence_topology}
 \title{Returns congruence topology}
 \usage{
-  congruence_topology(graph1, graph2,
-    warn.nonoverlap = TRUE)
+congruence_topology(graph1, graph2, warn.nonoverlap = TRUE)
 }
 \arguments{
   \item{graph1}{An object of type \code{popgraph}}
@@ -15,14 +14,14 @@
   = TRUE )}
 }
 \value{
-  An object of type \code{popgraph} where the node and edge
-  sets are the intersection of the two.
+An object of type \code{popgraph} where the node and edge
+sets are the intersection of the two.
 }
 \description{
-  Takes two graphs and returns topology that is the
-  intersection of the edge sets.
+Takes two graphs and returns topology that is the
+intersection of the edge sets.
 }
 \author{
-  Rodney J. Dyer <rjdyer@vcu.edu>
+Rodney J. Dyer <rjdyer@vcu.edu>
 }
 

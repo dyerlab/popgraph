@@ -2,8 +2,7 @@
 \alias{test_congruence}
 \title{Returns distance congruence between the two graphs}
 \usage{
-  test_congruence(graph1, graph2,
-    method = c("distance", "combinatorial")[1])
+test_congruence(graph1, graph2, method = c("distance", "combinatorial")[1])
 }
 \arguments{
   \item{graph1}{An object of type \code{igraph} or
@@ -20,14 +19,14 @@
   combinatorial measure of similarity.}
 }
 \value{
-  A non-parametric rank sum test
+A non-parametric rank sum test
 }
 \description{
-  This function makes the shortest path matrices for both
-  graphs and determines the correlation between pairwise
-  distance.
+This function makes the shortest path matrices for both
+graphs and determines the correlation between pairwise
+distance.
 }
 \author{
-  Rodney J. Dyer <rjdyer@vcu.edu>
+Rodney J. Dyer <rjdyer@vcu.edu>
 }
 

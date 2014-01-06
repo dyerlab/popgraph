@@ -3,10 +3,8 @@
 \alias{alt}
 \title{Sonoran desert altitude.}
 \description{
-  This is a raster file for altitude in the Sonoran desert
-  retion coincident with the Lophocereus and Upiga data
-  sets.
+This is a raster file for altitude in the Sonoran desert
+retion coincident with the Lophocereus and Upiga data sets.
 }
 \keyword{data}
-\keyword{datasets}
 

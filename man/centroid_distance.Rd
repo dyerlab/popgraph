@@ -2,7 +2,7 @@
 \alias{centroid_distance}
 \title{This function takes a data set and a group set and returns centroid distances}
 \usage{
-  centroid_distance(x, grouping)
+centroid_distance(x, grouping)
 }
 \arguments{
   \item{x}{The NxP matrix of raw data.}
@@ -10,13 +10,13 @@
   \item{grouping}{The Nx1 vector of grouping factors.}
 }
 \value{
-  An NxN pairwise distance matrix.
+An NxN pairwise distance matrix.
 }
 \description{
-  This is a convience function for a reduce and distance
-  operation based upon multivariate predictor variables.
+This is a convience function for a reduce and distance
+operation based upon multivariate predictor variables.
 }
 \author{
-  Rodney J. Dyer <rjdyer@vcu.edu>
+Rodney J. Dyer <rjdyer@vcu.edu>
 }
 

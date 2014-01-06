@@ -2,7 +2,7 @@
 \alias{theme_empty}
 \title{A blank theme for plotting networks}
 \usage{
-  theme_empty(base_size = 12, base_family = "Helvetica")
+theme_empty(base_size = 12, base_family = "Helvetica")
 }
 \arguments{
   \item{base_size}{The base size of the font}
@@ -10,12 +10,12 @@
   \item{base_family}{The font family to use}
 }
 \value{
-  A ggplot theme blank and transpatent for plotting in
-  another program.
+A ggplot theme blank and transpatent for plotting in
+another program.
 }
 \description{
-  This function defines a blank theme for plotting graph
-  objects in ggplot.
+This function defines a blank theme for plotting graph
+objects in ggplot.
 }
 \examples{
 data(lopho)
@@ -30,6 +30,6 @@ p
 p + theme_empty()
 }
 \author{
-  Rodney J. Dyer <rjdyer@vcu.edu>
+Rodney J. Dyer <rjdyer@vcu.edu>
 }
 

@@ -2,7 +2,7 @@
 \alias{to_html}
 \title{Converts population graph to html file for interactive viewing}
 \usage{
-  to_html(graph, file)
+to_html(graph, file)
 }
 \arguments{
   \item{graph}{A \code{popgraph} object.}
@@ -12,16 +12,16 @@
   function.}
 }
 \value{
-  The text of the html file to be saved or viewed in the
-  appropriate browser.
+The text of the html file to be saved or viewed in the
+appropriate browser.
 }
 \description{
-  This function takes a population graph that has been
-  'decorated' with sufficient spatial data to make a html
-  file that uses the D3 visualization javascript mateirals
-  to view it interactively.
+This function takes a population graph that has been
+'decorated' with sufficient spatial data to make a html
+file that uses the D3 visualization javascript mateirals to
+view it interactively.
 }
 \author{
-  Rodney J. Dyer <rjdyer@vcu.edu>
+Rodney J. Dyer <rjdyer@vcu.edu>
 }
 

@@ -2,7 +2,7 @@
 \alias{decorate_graph}
 \title{Merge data into popgraph node-wise}
 \usage{
-  decorate_graph(graph, df, stratum = "Population")
+decorate_graph(graph, df, stratum = "Population")
 }
 \arguments{
   \item{graph}{An object of type \code{igraph} to populate}
@@ -16,16 +16,16 @@
   with V(graph)$name attribute}
 }
 \value{
-  A populated igraph object with as much of the metadata in
-  the data.frame as possible stitched into the
-  \code{igraph} object
+A populated igraph object with as much of the metadata in
+the data.frame as possible stitched into the \code{igraph}
+object
 }
 \description{
-  This function takes a data frame and a popgraph object
-  and attempts to add the node data (from the data frame)
-  to the graph as vertex attributes.
+This function takes a data frame and a popgraph object and
+attempts to add the node data (from the data frame) to the
+graph as vertex attributes.
 }
 \author{
-  Rodney J. Dyer <rjdyer@vcu.edu>
+Rodney J. Dyer <rjdyer@vcu.edu>
 }
 

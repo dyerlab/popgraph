@@ -2,8 +2,8 @@
 \alias{to_SpatialPoints}
 \title{Translate object into a SpatialPoints object}
 \usage{
-  to_SpatialPoints(x, stratum = "Name",
-    longitude = "Longitude", latitude = "Latitude", ...)
+to_SpatialPoints(x, stratum = "Name", longitude = "Longitude",
+  latitude = "Latitude", ...)
 }
 \arguments{
   \item{x}{The object containin coordinates.}
@@ -21,12 +21,12 @@
   objects}
 }
 \value{
-  An object of type SpatialPoints
+An object of type SpatialPoints
 }
 \description{
-  Returns spatial points object
+Returns spatial points object
 }
 \author{
-  Rodney J. Dyer \email{rjdyer@vcu.edu}
+Rodney J. Dyer \email{rjdyer@vcu.edu}
 }
 
