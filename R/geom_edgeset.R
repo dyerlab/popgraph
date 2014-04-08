@@ -90,6 +90,7 @@ geom_edgeset<- function( mapping=NULL, graph=NULL, directed=FALSE, ... ) {
   }
   else if( (!is.null(mapping$color) | !is.null(mapping$colour))) {
     df$color <- get.edge.attribute( graph, mapping$colour )
+    df <- df[ order(df$color),]
     ret <- geom_segment( aes(x=X1,y=Y1,xend=X2,yend=Y2,color=color), data=df, show_guide=FALSE, ... )
   }
   
