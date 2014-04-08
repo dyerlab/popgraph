@@ -13,8 +13,13 @@
 #' @export
 decorate_graph <- function( graph, df, stratum="Population" ) {
   
-  if( !(stratum %in% names(df)))
-    stop("You must indicate which vertex attribute represents node names.")
+  if( !(stratum %in% names(df))){
+    if( "Stratum" %in% names(df))
+      stratum <- "Stratum"
+    else
+      stop("You must indicate which vertex attribute represents node names.")
+  }
+    
 
   node.labels <- V(graph)$name 
   num.nodes <- length( node.labels )

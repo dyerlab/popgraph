@@ -1,3 +1,8 @@
+version 1.4
+---------------
+* [FIX] Added code to remove missing factor levels from popgraph()
+* [ADD] Added option to decorate_graph() for default stratum="Stratum" as is common from data.frames derived from stratum_coordinates() and other functions.
+
 version 1.3
 ---------------
 * [FIX] fiddled with imports and importsFrom to get stuff to work without conflict between igraph and raster.
