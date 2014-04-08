@@ -67,6 +67,7 @@ geom_edgeset<- function( mapping=NULL, graph=NULL, directed=FALSE, ... ) {
   if( is.null(get.vertex.attribute(graph,"name")))
     V(graph)$name <- paste("node",1:length(V(graph)), sep="-")
   
+  
   # find the coordinates to all the segments and make into a data.frame
   layout <- matrix(cbind( x, y ), ncol=2)
   colnames(layout) <- c("X1","X2")
@@ -76,16 +77,22 @@ geom_edgeset<- function( mapping=NULL, graph=NULL, directed=FALSE, ... ) {
   df <- data.frame( coords[edgelist[,1],2:3], coords[edgelist[,2],2:3] )
   colnames(df) <- c("X1","Y1","X2","Y2")
   
-  if( !is.null(mapping$size) & !is.null(mapping$color)) {
+  if( !is.null(mapping$size) & (!is.null(mapping$color) | !is.null(mapping$colour))) {
     df$size <- get.edge.attribute(graph,mapping$size)
     df$color <- get.edge.attribute( graph, mapping$color )
     
     ret <- geom_segment( aes(x=X1,y=Y1,xend=X2,yend=Y2,size=size,color=color), data=df, show_guide=FALSE, ... )
   }
-  if( !is.null(mapping$size) ) {
+  
+  else if( !is.null(mapping$size) ) {
     df$size <- get.edge.attribute(graph,mapping$size)
     ret <- geom_segment( aes(x=X1,y=Y1,xend=X2,yend=Y2,size=size), data=df, show_guide=FALSE, ... )
   }
+  else if( (!is.null(mapping$color) | !is.null(mapping$colour))) {
+    df$color <- get.edge.attribute( graph, mapping$color )
+    ret <- geom_segment( aes(x=X1,y=Y1,xend=X2,yend=Y2,size=size,color=color), data=df, show_guide=FALSE, ... )
+  }
+  
   else 
     ret <- geom_segment( aes(x=X1,y=Y1,xend=X2,yend=Y2), data=df, show_guide=FALSE, ... )
     
