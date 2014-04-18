@@ -11,7 +11,7 @@
 #' @return An object of type \code{popgraph}.
 #' @export
 #' @author Rodney J. Dyer <rjdyer@@vcu.edu>
-popgraph <- function( x, groups, alpha=0.05, tol=1.0e-4, nboot=0 ) {
+popgraph <- function( x, groups, alpha=0.05, tol=1.0e-4 ) {
   
   if( missing(x) )
     stop("You must use a matrix to pass data to this function, object to create a 'PopulationGraph'" )

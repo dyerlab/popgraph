@@ -28,6 +28,8 @@ p <- ggplot() + geom_edgeset( aes(x,y), lopho)
 p <- p + geom_nodeset( aes(x,y), lopho )
 p
 p + theme_empty()
+p <- ggplot() + geom_edgeset( aes(x,y,color=weight), lopho)
+p
 }
 \author{
 Rodney J. Dyer <rjdyer@vcu.edu>

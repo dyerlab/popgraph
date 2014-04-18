@@ -10,6 +10,7 @@
 #' @param ... Largely ignored.
 #' @return A formatted geom_segment object for addition to a ggplot()
 #' @author Rodney J. Dyer <rjdyer@@vcu.edu>
+#' @import sampling
 #' @export
 #' @examples
 #' a <- matrix( c(0,1,0,1,1,0,0,1,0,0,0,1,1,1,1,0),nrow=4)
@@ -80,23 +81,24 @@ geom_edgeset<- function( mapping=NULL, graph=NULL, directed=FALSE, ... ) {
   if( !is.null(mapping$size) & (!is.null(mapping$color) | !is.null(mapping$colour))) {
     df$size <- get.edge.attribute(graph,mapping$size)
     df$color <- get.edge.attribute( graph, mapping$colour )
-    
-    ret <- geom_segment( aes(x=X1,y=Y1,xend=X2,yend=Y2,size=size,color=color), data=df, show_guide=FALSE, ... )
+    ret <- geom_segment( aes(x=X1,y=Y1,xend=X2,yend=Y2,size=size,color=color), data=df, ... )
   }
   
   else if( !is.null(mapping$size) ) {
     df$size <- get.edge.attribute(graph,mapping$size)
-    ret <- geom_segment( aes(x=X1,y=Y1,xend=X2,yend=Y2,size=size), data=df, show_guide=FALSE, ... )
+    ret <- geom_segment( aes(x=X1,y=Y1,xend=X2,yend=Y2,size=size), data=df, ... )
   }
+  
   else if( (!is.null(mapping$color) | !is.null(mapping$colour))) {
     lbl <- as.character( mapping$colour)
     df[[lbl]] <- get.edge.attribute( graph, mapping$colour )
     df <- df[ order(df[[lbl]]),]
     ret <- geom_segment( aes_string(x="X1",y="Y1",xend="X2",yend="Y2",color=lbl), data=df, ... )
+    cat("color\n")
   }
   
   else 
-    ret <- geom_segment( aes(x=X1,y=Y1,xend=X2,yend=Y2), data=df, show_guide=FALSE, ... )
+    ret <- geom_segment( aes(x=X1,y=Y1,xend=X2,yend=Y2), data=df, ... )
     
   return( ret )
   

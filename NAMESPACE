@@ -1,5 +1,6 @@
 S3method("-",popgraph)
 export(as.popgraph)
+export(bootstrap_popgraph)
 export(centroid_distance)
 export(centroid_variance)
 export(congruence_topology)

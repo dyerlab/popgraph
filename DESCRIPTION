@@ -19,7 +19,8 @@ Depends:
 Imports:
     MASS,
     sp,
-    Matrix
+    Matrix,
+    sampling
 Suggests:
     testthat,
     maps,
