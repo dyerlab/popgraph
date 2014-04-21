@@ -94,7 +94,6 @@ geom_edgeset<- function( mapping=NULL, graph=NULL, directed=FALSE, ... ) {
     df[[lbl]] <- get.edge.attribute( graph, mapping$colour )
     df <- df[ order(df[[lbl]]),]
     ret <- geom_segment( aes_string(x="X1",y="Y1",xend="X2",yend="Y2",color=lbl), data=df, ... )
-    cat("color\n")
   }
   
   else 
