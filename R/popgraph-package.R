@@ -76,3 +76,22 @@ NULL
 NULL
 
 
+#' Araptus attenuatus data
+#' 
+#' This is the Araptus attenuatus data in mv format
+#' @name arapat_mv
+#' @docType data
+#' @keywords data
+NULL
+
+#' Arapat popualtion data
+#' 
+#' The population strata for the arapat_mv data
+#' @name arapat_pop
+#' @docType data
+#' @keywords data
+NULL
+
+
+
+

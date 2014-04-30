@@ -1,5 +1,7 @@
 version 1.4
 ---------------
+* [ADD] Added permute_popgraph() to estiamte support for edges in the topology.
+* [FIX] Changed write.popgraph() to write_popgraph() to conform with other naming conventions.
 * [FIX] Added code to remove missing factor levels from popgraph()
 * [ADD] Added option to decorate_graph() for default stratum="Stratum" as is common from data.frames derived from stratum_coordinates() and other functions.
 * [FIX] Fixed a problem when passing colors to geom_edgeset without a size characteristic.

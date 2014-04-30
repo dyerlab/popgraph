@@ -20,7 +20,7 @@
 #' @return Nothing 
 #' @export
 #' @author Rodney J. Dyer <rjdyer@@vcu.edu>
-write.popgraph <- function(graph,file,format="pgraph",...){
+write_popgraph <- function(graph,file,format="pgraph",...){
   
   if(!is(graph,"popgraph"))
     stop("This requires a popgraph object")

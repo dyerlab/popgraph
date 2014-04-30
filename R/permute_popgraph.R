@@ -11,7 +11,7 @@
 #'  edge was found in the perumuted data sets.
 #' @export
 #' 
-bootstrap_popgraph <- function( data, groups, nboot=50){
+permute_popgraph <- function( data, groups, nboot=50){
   if( !is(data,"matrix"))
     stop("Cannot use non-matrix data to make a graph, let alone bootstrap it...")
   if( nrow(data) != length(groups))
