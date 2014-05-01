@@ -1,15 +1,17 @@
-#' Plotting of a population graph edge set using ggplot neumonic
+#' Plotting of a population graph edge labels using ggplot neumonic
 #' 
-#' This function allows you to layer the edgeset of a \code{popgraph}
+#' This function allows you to layer the edgeset lables from a \code{popgraph}
 #'  object
 #' @param mapping The aesthetic mapping as an \code{aes()} object.  This aesthetic
-#'  must at least have values for x and y
+#'  must at least have values for x, y, and label
 #' @param graph The popgraph/igraph object to be plot
 #' @param directed A flag indicating that you should only plot the edge 
 #'  with the largest weight if more than one edge connects nodes.
 #' @param label The name of the edge attribute to plot to add as geom_text()
-#' @param ... Largely ignored.
-#' @return A formatted geom_segment object for addition to a ggplot()
+#' @param offset The amount added to each X,Y coordinate to move the label
+#'  off the line (default=c(0,0)).
+#' @param ... Options passed to \code{geom_text} like color, etc.
+#' @return A formatted geom_text object for addition to a ggplot()
 #' @author Rodney J. Dyer <rjdyer@@vcu.edu>
 #' @import sampling
 #' @export
@@ -19,12 +21,12 @@
 #' graph <- as.popgraph(a)
 #' igraph::V(graph)$x <- runif(4)
 #' igraph::V(graph)$y <- runif(4)
+#' igraph::E(graph)$Label <- LETTERS[1:4]
 #' require(ggplot2)
-#' ggplot() + geom_edgeset( aes(x=x,y=y), graph )
-#' ggplot() + geom_edgeset( aes(x=x,y=y), graph, color="darkblue" )
-#' require(grid)
-#' ggplot() + geom_edgeset( aes(x=x,y=y), graph, directed=TRUE, arrow=arrow(length=unit(0.5,"cm")) )
-geom_edgeset<- function( mapping=NULL, graph=NULL, directed=FALSE, label=NULL, ... ) {
+#' ggplot() + geom_edgeset( aes(x=x,y=y), graph ) + geom_edgelabels(aes(x=x,y=y,label=Label),graph)
+#' ggplot() + geom_edgeset( aes(x=x,y=y), graph ) + geom_edgelabels(aes(x=x,y=y,label=Label),graph,color="red")
+#' ggplot() + geom_edgeset( aes(x=x,y=y), graph ) + geom_edgelabels(aes(x=x,y=y,label=Label),graph,color="red", offset=c(.005,-0.004))
+geom_edgelabels<- function( mapping=NULL, graph=NULL, directed=FALSE, offset=c(0,0), ... ) {
   
   # catch errors with missing 
   if( is.null(mapping))
@@ -79,37 +81,12 @@ geom_edgeset<- function( mapping=NULL, graph=NULL, directed=FALSE, label=NULL, .
   df <- data.frame( coords[edgelist[,1],2:3], coords[edgelist[,2],2:3] )
   colnames(df) <- c("X1","Y1","X2","Y2")
   
-  if( !is.null(mapping$size) & (!is.null(mapping$color) | !is.null(mapping$colour))) {
-    df$size <- get.edge.attribute(graph,mapping$size)
-    df$color <- get.edge.attribute( graph, mapping$colour )
-    ret <- geom_segment( aes(x=X1,y=Y1,xend=X2,yend=Y2,size=size,color=color), data=df, ... )
-  }
+  vals <- get.edge.attribute( graph, as.character(mapping$label) )
+  vals <- format( vals, digits=4)
+  df.lbls <- data.frame( X=(df$X1+df$X2)/2 + offset[1], Y=(df$Y1+df$Y2)/2 + offset[2], label=format(vals,digits=4) )
+
+  ret <-geom_text(aes(x=X,y=Y,label=label),data=df.lbls,...)
   
-  else if( !is.null(mapping$size) ) {
-    df$size <- get.edge.attribute(graph,mapping$size)
-    ret <- geom_segment( aes(x=X1,y=Y1,xend=X2,yend=Y2,size=size), data=df, ... )
-  }
-  
-  else if( (!is.null(mapping$color) | !is.null(mapping$colour))) {
-    lbl <- as.character( mapping$colour)
-    df[[lbl]] <- get.edge.attribute( graph, mapping$colour )
-    df <- df[ order(df[[lbl]]),]
-    ret <- geom_segment( aes_string(x="X1",y="Y1",xend="X2",yend="Y2",color=lbl), data=df, ... )
-  }
-  
-  else 
-    ret <- geom_segment( aes(x=X1,y=Y1,xend=X2,yend=Y2), data=df, ... )
-  
-  
-  if( !is.null(label) ) {
-    vals <- get.edge.attribute( graph, as.character(mapping$label) )
-    vals <- format( vals, digits=4)
-    df.lbls <- data.frame( X=(df$X1+df$X2)/2, Y=(df$Y1+df$Y2)/2, theLabel=as.character(vals) )
-    ret <- ret + geom_text(aes(x=X,y=Y,label=theLabel),data=df.lbls)
-    
-    cat("in label\n")
-  }
-    
   return( ret )
   
 }

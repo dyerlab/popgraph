@@ -32,6 +32,7 @@
 #' @import ggplot2 
 #' @import igraph
 #' @import Matrix
+#' @import sampling
 #' @importFrom sp Lines Line SpatialPoints SpatialLines bbox
 #' @name popgraph-package
 #' @rdname popgraph-package
