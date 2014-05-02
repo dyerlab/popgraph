@@ -7,7 +7,6 @@
 #' @param graph The popgraph/igraph object to be plot
 #' @param directed A flag indicating that you should only plot the edge 
 #'  with the largest weight if more than one edge connects nodes.
-#' @param label The name of the edge attribute to plot to add as geom_text()
 #' @param offset The amount added to each X,Y coordinate to move the label
 #'  off the line (default=c(0,0)).
 #' @param ... Options passed to \code{geom_text} like color, etc.
@@ -27,6 +26,7 @@
 #' ggplot() + geom_edgeset( aes(x=x,y=y), graph ) + geom_edgelabels(aes(x=x,y=y,label=Label),graph,color="red")
 #' ggplot() + geom_edgeset( aes(x=x,y=y), graph ) + geom_edgelabels(aes(x=x,y=y,label=Label),graph,color="red", offset=c(.005,-0.004))
 geom_edgelabels<- function( mapping=NULL, graph=NULL, directed=FALSE, offset=c(0,0), ... ) {
+  X <- Y <- label <- NULL
   
   # catch errors with missing 
   if( is.null(mapping))
@@ -84,7 +84,7 @@ geom_edgelabels<- function( mapping=NULL, graph=NULL, directed=FALSE, offset=c(0
   vals <- get.edge.attribute( graph, as.character(mapping$label) )
   vals <- format( vals, digits=4)
   df.lbls <- data.frame( X=(df$X1+df$X2)/2 + offset[1], Y=(df$Y1+df$Y2)/2 + offset[2], label=format(vals,digits=4) )
-
+  
   ret <-geom_text(aes(x=X,y=Y,label=label),data=df.lbls,...)
   
   return( ret )

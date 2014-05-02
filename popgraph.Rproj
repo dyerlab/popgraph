@@ -13,6 +13,5 @@ RnwWeave: knitr
 LaTeX: pdfLaTeX
 
 BuildType: Package
-PackagePath: popgraph
 PackageInstallArgs: --no-multiarch --resave-data
 PackageRoxygenize: rd,collate,namespace

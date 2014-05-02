@@ -7,7 +7,6 @@
 #' @param graph The popgraph/igraph object to be plot
 #' @param directed A flag indicating that you should only plot the edge 
 #'  with the largest weight if more than one edge connects nodes.
-#' @param label The name of the edge attribute to plot to add as geom_text()
 #' @param ... Largely ignored.
 #' @return A formatted geom_segment object for addition to a ggplot()
 #' @author Rodney J. Dyer <rjdyer@@vcu.edu>
@@ -24,8 +23,8 @@
 #' ggplot() + geom_edgeset( aes(x=x,y=y), graph, color="darkblue" )
 #' require(grid)
 #' ggplot() + geom_edgeset( aes(x=x,y=y), graph, directed=TRUE, arrow=arrow(length=unit(0.5,"cm")) )
-geom_edgeset<- function( mapping=NULL, graph=NULL, directed=FALSE, label=NULL, ... ) {
-  
+geom_edgeset<- function( mapping=NULL, graph=NULL, directed=FALSE, ... ) {
+  X <- Y <- NULL
   # catch errors with missing 
   if( is.null(mapping))
     stop("You need at least aes(x,y) for aesthetic mapping in this function.")
@@ -100,15 +99,7 @@ geom_edgeset<- function( mapping=NULL, graph=NULL, directed=FALSE, label=NULL, .
   else 
     ret <- geom_segment( aes(x=X1,y=Y1,xend=X2,yend=Y2), data=df, ... )
   
-  
-  if( !is.null(label) ) {
-    vals <- get.edge.attribute( graph, as.character(mapping$label) )
-    vals <- format( vals, digits=4)
-    df.lbls <- data.frame( X=(df$X1+df$X2)/2, Y=(df$Y1+df$Y2)/2, theLabel=as.character(vals) )
-    ret <- ret + geom_text(aes(x=X,y=Y,label=theLabel),data=df.lbls)
-    
-    cat("in label\n")
-  }
+
     
   return( ret )
   
