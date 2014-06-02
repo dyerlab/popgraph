@@ -5,8 +5,8 @@ date: "June 2, 2014"
 output: 
   html_document:
     toc: false
-    theme: flatly
-    highlight: textmate
+    theme: journal
+    highlight: haddock
 ---
 
 <!--  Some preamble stuff for knitr  -->
@@ -343,7 +343,7 @@ lopho.edges
 
 Once we have them extracted into the right format, we can add them to the raster plot.  I plot the nodes twice to overlay a circular icon (`pch=16`) onto the default cross marker and make them 50 \% larger (`cex=1.5`).
 
-```{r, fig.width=8}
+```{r, fig.width=8,cache=TRUE}
 plot( alt )
 plot( lopho.edges, add=TRUE, col="#555555" )
 plot( lopho.nodes, add=TRUE, col="black", cex=1.5 )
@@ -369,7 +369,7 @@ df.nodes <- data.frame(Pop=V(lopho)$name, Latitude=V(lopho)$Latitude, Longitude=
 Then we can extract the elevation from the `alt` raster as:
 
 ```{r}
-df.nodes$Elevation <- extract( alt, lopho.nodes )
+df.nodes$Elevation <- raster::extract( alt, lopho.nodes )
 summary(df.nodes)
 ```
 
@@ -387,7 +387,7 @@ summary(df.edge)
 
 For each of the `{r}length(E(lopho))` edges, we can exract the elevation profile.  Here is an example from one of the edges.
 
-```{r}
+```{r,cache=TRUE}
 plot(alt)
 plot(lopho.edges[3],add=TRUE,col="red",lwd=3)
 ```
