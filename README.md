@@ -13,4 +13,3 @@ To install the most recent version of this package,
 
 If you would like to contribute to this package or have any questions regarding its construction, use, or additional functionalities, please contact [Rodney J. Dyer](mailto:rjdyer@vcu.edu) or visit his lab page http://dyerlab.bio.vcu.edu
 
-
