@@ -19,6 +19,6 @@ popgraph_*.tar.gz
 popgraph_*.tgz
 *.Rd
 
-
-
-
+ggmapTemp.png
+index_files
+index_cache
