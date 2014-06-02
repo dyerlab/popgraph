@@ -1,7 +1,7 @@
 ---
 title: "Population Graphs"
 author: "Rodney J. Dyer"
-date: "Updated: June 2, 2014"
+date: "June 2, 2014"
 output: 
   html_document:
     toc: true
