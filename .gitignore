@@ -18,6 +18,9 @@ popgraph.Rcheck
 popgraph_*.tar.gz
 popgraph_*.tgz
 *.Rd
+ggmapTemp.png
+index_cache
+index_files
 
 ggmapTemp.png
 index_files
