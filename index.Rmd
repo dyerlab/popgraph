@@ -8,6 +8,7 @@ output:
     highlight: pygments
 ---
 
+
 <!--  Some preamble stuff for knitr  -->
 ```{r setup, include=FALSE}
 library(knitr)
