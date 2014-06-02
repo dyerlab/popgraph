@@ -22,9 +22,10 @@
 #' igraph::V(graph)$y <- runif(4)
 #' igraph::E(graph)$Label <- LETTERS[1:4]
 #' require(ggplot2)
-#' ggplot() + geom_edgeset( aes(x=x,y=y), graph ) + geom_edgelabels(aes(x=x,y=y,label=Label),graph)
-#' ggplot() + geom_edgeset( aes(x=x,y=y), graph ) + geom_edgelabels(aes(x=x,y=y,label=Label),graph,color="red")
-#' ggplot() + geom_edgeset( aes(x=x,y=y), graph ) + geom_edgelabels(aes(x=x,y=y,label=Label),graph,color="red", offset=c(.005,-0.004))
+#' p <- ggplot() + geom_edgeset( aes(x=x,y=y), graph ) 
+#' p + geom_edgelabels(aes(x=x,y=y,label=Label),graph)
+#' p + geom_edgelabels(aes(x=x,y=y,label=Label),graph,color="red")
+#' p + geom_edgelabels(aes(x=x,y=y,label=Label),graph,color="red", offset=c(.005,-0.004))
 geom_edgelabels<- function( mapping=NULL, graph=NULL, directed=FALSE, offset=c(0,0), ... ) {
   X <- Y <- label <- NULL
   
