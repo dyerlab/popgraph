@@ -1,0 +1,27 @@
+# History files
+.Rhistory
+.DS_Store
+popgraph.Rproj
+
+# Ignore the look of the readme markup
+README.html*
+
+# ignore the man files
+#*.Rd
+#man/*
+
+# Example code in package build process
+*-Ex.R
+.Rproj.user
+.Rproj
+
+
+# Ignore the building and checking part
+popgraph.Rcheck
+popgraph_*.tar.gz
+popgraph_*.tgz
+#*.Rd
+
+ggmapTemp.png
+index_files
+index_cache

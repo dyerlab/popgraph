@@ -1,0 +1,14 @@
+---
+title: "popgraph"
+author: "Rodney J. Dyer"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{popgraph}
+  %\VignetteEngine{knitr::rmarkdown}
+---
+
+The vignette for this package is a bit long and is provided as an html page at:
+
+[http://dyerlab.github.io/popgraph/](http://dyerlab.github.io/popgraph/)
+

@@ -1,0 +1,13 @@
+^.*\.Rproj$
+^\.Rproj\.user$
+<<<<<<< HEAD
+.DS_Store
+.Rhistory
+.gitignore
+.Rbuildignore
+.git
+popgraph.Rproj
+index.html
+README.md
+ggmapTemp.png
+^cran-comments\.md$
