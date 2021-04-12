@@ -1,3 +1,7 @@
+version 1.5.2
+---------------
+* [ADD] Added to_sf() function to plot directly to leaflet objects.
+
 version 1.5.1
 ---------------
 * [DEL] Removed theme_empty() as theme_void() does the same thing.

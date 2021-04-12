@@ -1,8 +1,8 @@
 Package: popgraph
 Type: Package
 Title: This is an R package that constructs and manipulates population graphs
-Version: 1.5.1
-Date: 2018-11-03
+Version: 1.5.2
+Date: 2021-04-12
 Author: Rodney J. Dyer
 Maintainer: Rodney J. Dyer <rjdyer@vcu.edu>
 Description: This is a generic package that produces "Population Graphs"
@@ -14,7 +14,7 @@ License: GPL (>= 2)
 LazyLoad: yes
 Encoding: UTF-8
 Depends:
-    R (>= 3.0.0)
+    R (>= 4.0.0)
 Imports:
     ggplot2,
     igraph,
@@ -31,7 +31,6 @@ Imports:
 Suggests:
     testthat,
     maps,
-    fields,
     grid,
     knitr
 RoxygenNote: 7.1.1

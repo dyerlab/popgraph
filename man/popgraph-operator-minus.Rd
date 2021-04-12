@@ -20,16 +20,16 @@ An overload of the \code{-} operator for \code{popgraph} objects that
  removes the edges in the first one that are in the second one.
 }
 \examples{
-library(igraph)
-e1 <- as.popgraph( graph.atlas(716) )
-e2 <- as.popgraph( graph.atlas(806) )
-e3 <- e1 - e2
-par(mfrow=c(1,3))
-l <- layout.fruchterman.reingold( e1 )
-plot(e1, layout=l)
-plot(e2, layout=l)
-plot(e3, layout=l)
-par(mfrow=c(1,1))
+# library(igraph)
+# e1 <- as.popgraph( igraph::graph.atlas(716) )
+# e2 <- as.popgraph( igraph::graph.atlas(806) )
+# e3 <- e1 - e2
+# par(mfrow=c(1,3))
+# l <- igraph::layout.fruchterman.reingold( e1 )
+# plot(e1, layout=l)
+# plot(e2, layout=l)
+# plot(e3, layout=l)
+# par(mfrow=c(1,1))
 }
 \author{
 Rodney J. Dyer \email{rjdyer@vcu.edu}

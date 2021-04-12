@@ -17,19 +17,22 @@
 #' @importFrom dplyr group_by summarize mutate arrange
 #' @author Rodney J. Dyer <rjdyer@@vcu.edu>
 #' @examples
-#' library(igraph)
-#' data(lopho)
-#' data(baja)
-#' graph <- decorate_graph(lopho, baja )
-#' nodes <- to_sf( graph, what="nodes")
-#' edges <- to_sf( graph, what="edges")
-#' library( leaflet )
-#' leaflet() %>%
-#'  addTiles() %>%
-#'  addMarkers( nodes ) %>%
-#'  addPolylines( edges )
+#' # library(igraph)
+#' # data(lopho)
+#' # data(baja)
+#' # graph <- decorate_graph(lopho, baja )
+#' # nodes <- to_sf( graph, what="nodes")
+#' # edges <- to_sf( graph, what="edges")
+#' # library( leaflet )
+#' # leaflet() %>%
+#' #  addTiles() %>%
+#' #  addMarkers( nodes ) %>%
+#' #  addPolylines( edges )
 
 to_sf <- function( x, what=c("nodes","edges")[1], Longitude = "Longitude", Latitude = "Latitude", CRS = 4326 ) { 
+  
+  # hack to get check to not complain.
+  to <- from <- EdgeGroup <- weight <- NULL
   
   if( !(what %in% c("nodes","edges")) ) {
     stop("Incorrect what... what?")
@@ -67,7 +70,6 @@ to_sf <- function( x, what=c("nodes","edges")[1], Longitude = "Longitude", Latit
       dplyr::summarize( Weight = mean(weight) ) %>%
       sf::st_cast( "LINESTRING" ) -> df
     )
-    
     
     return( df )
 
