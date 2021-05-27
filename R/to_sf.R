@@ -26,8 +26,8 @@
 #' # library( leaflet )
 #' # leaflet() %>%
 #' #  addTiles() %>%
-#' #  addMarkers( nodes ) %>%
-#' #  addPolylines( edges )
+#' #  addMarkers( data=nodes ) %>%
+#' #  addPolylines( data=edges )
 
 to_sf <- function( x, what=c("nodes","edges")[1], Longitude = "Longitude", Latitude = "Latitude", CRS = 4326 ) { 
   
