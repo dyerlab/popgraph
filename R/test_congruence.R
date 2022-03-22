@@ -32,7 +32,7 @@ test_congruence <- function( graph1, graph2, method=c("distance","combinatorial"
     distances.graph1 <- Adis[lower.tri( Adis )]
     distances.graph2 <- Bdis[lower.tri( Bdis )]
     
-    if( any(is.na(distances.graph2)) || any(is.na(distances.graph1))) {
+    if( any(is.infinite(distances.graph2)) || any(is.infinite(distances.graph1))) {
       distances.graph1[ is.infinite(distances.graph2) ] <- NA
       distances.graph2[ is.infinite(distances.graph1) ] <- NA
       distances.graph1[ is.infinite(distances.graph1) ] <- NA
