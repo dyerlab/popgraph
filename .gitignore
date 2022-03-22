@@ -25,3 +25,7 @@ popgraph_*.tgz
 ggmapTemp.png
 index_files
 index_cache
+/doc/
+/Meta/
+
+*.icloud

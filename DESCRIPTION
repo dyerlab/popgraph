@@ -1,7 +1,7 @@
 Package: popgraph
 Type: Package
 Title: This is an R package that constructs and manipulates population graphs
-Version: 1.5.2
+Version: 1.5.3
 Date: 2021-04-12
 Author: Rodney J. Dyer
 Maintainer: Rodney J. Dyer <rjdyer@vcu.edu>
@@ -33,5 +33,5 @@ Suggests:
     maps,
     grid,
     knitr
-RoxygenNote: 7.1.1
+RoxygenNote: 7.1.2
 VignetteBuilder: knitr
