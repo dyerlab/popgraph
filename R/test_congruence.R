@@ -13,7 +13,7 @@
 #' @return A non-parametric rank sum test
 #' @author Rodney J. Dyer <rjdyer@@vcu.edu>
 #' @export
-test_congruence <- function( graph1, graph2, method=c("distance","combinatorial")[1], verbose=TRUE ) {
+test_congruence <- function( graph1, graph2, method=c("distance","combinatorial")[1]) {
   cong.nodes <- intersect( igraph::V(graph1)$name , igraph::V(graph2)$name )
   
   if( is.null(cong.nodes) )
