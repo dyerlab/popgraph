@@ -37,9 +37,6 @@ test_congruence <- function( graph1, graph2, method=c("distance","combinatorial"
       distances.graph2[ is.infinite(distances.graph1) ] <- NA
       distances.graph1[ is.infinite(distances.graph1) ] <- NA
       distances.graph2[ is.infinite(distances.graph1) ] <- NA
-      if( verbose ) { 
-        warning("You have disconnected subgraphs.  I'm going to 'ignore' these edges.")
-      }
     }
     
     fit <- cor.test( distances.graph1, distances.graph2 , na.rm=TRUE )
