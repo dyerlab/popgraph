@@ -18,19 +18,16 @@ Depends:
 Imports:
     ggplot2,
     igraph,
-    lpSolve,
     MASS,
     sp,
     sf,
     Matrix,
     sampling,
-    networkD3,
     methods,
     magrittr,
     dplyr
 Suggests:
     testthat,
-    maps,
     grid,
     knitr
 RoxygenNote: 7.1.2
