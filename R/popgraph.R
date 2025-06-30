@@ -77,10 +77,6 @@ popgraph <- function( x, groups, alpha=0.05, tol=1.0e-4 ) {
   
   allLD <- centroid_distance( LDValues, groups )
   allSD <- centroid_variance( LDValues, groups )
-  
-#  Partitions <- Partition(data.frame(groups,LDValues),stratum="groups") 
-#  allLD <- lapply( Partitions, function(x) { y <- x[2:(dim(x)[2])]; return( apply(y,2,sum) ) } ) 
-#  allSD <- lapply( Partitions, function(x) { y <- x[2:(dim(x)[2])]; return( apply(y,2,var) ) } )
   D <- matrix(0.0,nrow=K,ncol=K)
   
   for(i in seq(1,K)) 
@@ -127,8 +123,6 @@ popgraph <- function( x, groups, alpha=0.05, tol=1.0e-4 ) {
   graph <- graph.adjacency(D,mode="undirected",weighted=TRUE,diag=FALSE)
   igraph::V(graph)$name <- row.names(D)  
   
-#  popSD <- unlist( lapply( allSD, sum ) )
-#  popSD <- scale( popSD, center=min(popSD), scale=TRUE) * 5 + 5    
   popSD <- scale( allSD, center=min(allSD), scale=TRUE) * 5 + 5
   igraph::V(graph)$size <- popSD
   
