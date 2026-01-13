@@ -22,7 +22,7 @@ randomize_graph <- function( graph=NULL, mode=c("full","degree")[2] ) {
     a <- matrix(0, nrow=nrow(e), ncol=ncol(e))
     a[ lower.tri(a)] <- new_vals
     a <- a + t(a)
-    g <- igraph::graph.adjacency(a,mode = "undirected" )
+    g <- igraph::graph_from_adjacency_matrix(a,mode = "undirected" )
     return( g )
   } 
   else if( mode == "degree" ){

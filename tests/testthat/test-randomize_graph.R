@@ -8,7 +8,7 @@ test_that("testing", {
   A <- matrix(0,nrow=10,ncol=10)
   A[ lower.tri(A)] <- x
   A <- A + t(A)
-  g <- igraph::graph.adjacency(A,mode="undirected")
+  g <- igraph::graph_from_adjacency_matrix(A,mode="undirected")
   
   expect_that( randomize_graph(g, "bob"), throws_error() )
   

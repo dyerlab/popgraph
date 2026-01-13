@@ -1,9 +1,9 @@
-popgraph 1.5
+popgraph 1.6.0
 ============
 
-Released to CRAN 8 May 2017.
+Updated 2026.01.13
 
-This is an R package for creating and manipulating population graph objects useful for spatial landscape and population genetic analyses of genetic marker data.  This statistical method is based conditional genetic covariance and has been applied primarily to genetic marker data.  Routines in this package integrate the popgraph network objects into spatial objects using the *igraph* and *sp* packages.  
+This is an R package for creating and manipulating population graph objects useful for spatial landscape and population genetic analyses of genetic marker data.  This statistical method is based conditional genetic covariance and has been applied primarily to genetic marker data.  
 
 For a complete overview of the package, see the full documentation at http://dyerlab.github.io/popgraph/
 

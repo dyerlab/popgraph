@@ -27,7 +27,6 @@
 #' There are some very good examples of the components of this package are used
 #'  in the vignettes for this package.
 #' @author Rodney J. Dyer <rjdyer@@vcu.edu>
-#' @docType package
 #' @keywords package
 #' @import ggplot2 
 #' @import igraph

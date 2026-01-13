@@ -120,7 +120,7 @@ popgraph <- function( x, groups, alpha=0.05, tol=1.0e-4 ) {
   
   D[ EED<=critVal ] <- 0
   
-  graph <- graph.adjacency(D,mode="undirected",weighted=TRUE,diag=FALSE)
+  graph <- graph_from_adjacency_matrix(D,mode="undirected",weighted=TRUE,diag=FALSE)
   igraph::V(graph)$name <- row.names(D)  
   
   popSD <- scale( allSD, center=min(allSD), scale=TRUE) * 5 + 5

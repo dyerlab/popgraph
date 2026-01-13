@@ -33,7 +33,7 @@ congruence_topology <- function( graph1, graph2, warn.nonoverlap=TRUE ) {
   #a <- as.matrix( get.adjacency(graph1))
   #b <- as.matrix( get.adjacency(graph2))
   
-  cong <- graph.adjacency( a*b, mode="undirected" )
+  cong <- graph_from_adjacency_matrix( a*b, mode="undirected" )
   class(cong) <- c("igraph","popgraph")
   return( cong )
 

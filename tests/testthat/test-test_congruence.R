@@ -29,7 +29,7 @@ test_that("testing", {
   
   
   A <- matrix(0,nrow=4,ncol=4)
-  graphA <- graph.adjacency(A,mode="undirected")
+  graphA <- graph_from_adjacency_matrix(A,mode="undirected")
   expect_that( test_congruence(graph1,graphA), throws_error())
   
   

@@ -10,7 +10,7 @@ as.popgraph <- function(graph) {
   ret <- NULL
   if( is(graph,"matrix")) {  
     
-    ret <- igraph::graph.adjacency( graph, mode="undirected",weighted=TRUE) 
+    ret <- igraph::graph_from_adjacency_matrix( graph, mode="max",weighted=TRUE) 
     if( is.null(colnames( graph )) )
       igraph::V(ret)$name <- as.character(paste("node",seq(1,ncol(graph)), sep="-"))
     else

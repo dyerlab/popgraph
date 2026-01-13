@@ -40,7 +40,7 @@ read_popgraph <- function( file, sep="\t" ) {
   }
   
   rownames(A) <- colnames(A) <- names
-  graph <- graph.adjacency( A, mode="undirected", weighted=TRUE)
+  graph <- graph_from_adjacency_matrix( A, mode="undirected", weighted=TRUE)
   igraph::V(graph)$size <- sizes 
   igraph::V(graph)$color <- colors
   

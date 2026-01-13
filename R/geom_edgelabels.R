@@ -49,7 +49,7 @@ geom_edgelabels<- function( mapping=NULL, graph=NULL, directed=FALSE, offset=c(0
         }
       }
     }
-    g <- graph.adjacency(d, mode="directed",weighted=TRUE )
+    g <- graph_from_adjacency_matrix(d, mode="directed",weighted=TRUE )
     df <- to_data.frame( graph )
     graph <- decorate_graph(g, df, stratum="name" ) 
   }
