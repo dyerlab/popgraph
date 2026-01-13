@@ -65,5 +65,5 @@ asymmetric_weights <- function(graph, perplexity = 4, tol = 1e-5, max_iter = 100
   igraph::E(g_dir)$weight <- edge_weights
   igraph::V(g_dir)$name <- nodes
   
-  return(g_dir)
+  return( as.popgraph( g_dir ) )
 }
