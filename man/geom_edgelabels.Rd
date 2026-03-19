@@ -18,7 +18,7 @@ must at least have values for x, y, and label}
 
 \item{graph}{The popgraph/igraph object to be plot}
 
-\item{directed}{A flag indicating that you should only plot the edge 
+\item{directed}{A flag indicating that you should only plot the edge
 with the largest weight if more than one edge connects nodes.}
 
 \item{offset}{The amount added to each X,Y coordinate to move the label
@@ -41,7 +41,7 @@ igraph::V(graph)$x <- runif(4)
 igraph::V(graph)$y <- runif(4)
 igraph::E(graph)$Label <- LETTERS[1:4]
 require(ggplot2)
-p <- ggplot() + geom_edgeset( aes(x=x,y=y), graph ) 
+p <- ggplot() + geom_edgeset( aes(x=x,y=y), graph )
 p + geom_edgelabels(aes(x=x,y=y,label=Label),graph)
 p + geom_edgelabels(aes(x=x,y=y,label=Label),graph,color="red")
 p + geom_edgelabels(aes(x=x,y=y,label=Label),graph,color="red", offset=c(.005,-0.004))

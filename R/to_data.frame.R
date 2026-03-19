@@ -18,12 +18,14 @@ to_data.frame <- function( x, mode=c("nodes","edges")[1], as.named=TRUE, ... ){
   ret <- NULL
   
   if( mode=="nodes")  {
-    cols <- list.vertex.attributes( x )
+    cols <- igraph::list.vertex.attributes( x )
     ret <- data.frame( vertex.id=seq(1,length(igraph::V(x))))
     if( length(cols) > 0 ) {
-      ret[[cols[1]]] <- get.vertex.attribute(x,name=cols[1])
-      for( i in 2:length(x))
-        ret[[cols[i]]] <- get.vertex.attribute(x, name=cols[i])  
+      ret[[cols[1]]] <- igraph::get.vertex.attribute(x,name=cols[1])
+      if( length(cols) > 1 ) {
+        for( i in 2:length(cols))
+          ret[[cols[i]]] <- igraph::get.vertex.attribute(x, name=cols[i])
+      }
     }
     if( !("vertex.id" %in% cols))
       ret$vertex.id <- NULL

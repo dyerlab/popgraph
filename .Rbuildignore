@@ -1,6 +1,5 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
-<<<<<<< HEAD
 .DS_Store
 .Rhistory
 .gitignore
@@ -13,3 +12,5 @@ ggmapTemp.png
 ^cran-comments\.md$
 ^doc$
 ^Meta$
+^CLAUDE\.md$
+^\.claude$

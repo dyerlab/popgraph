@@ -12,7 +12,7 @@ must at least have values for x and y}
 
 \item{graph}{The popgraph/igraph object to be plot}
 
-\item{directed}{A flag indicating that you should only plot the edge 
+\item{directed}{A flag indicating that you should only plot the edge
 with the largest weight if more than one edge connects nodes.}
 
 \item{...}{Largely ignored.}
@@ -34,7 +34,7 @@ igraph::E(graph)$weight <- 1 + rpois(4,2)
 require(ggplot2)
 ggplot() + geom_edgeset( aes(x=x,y=y), graph )
 ggplot() + geom_edgeset( aes(x=x,y=y), graph, color="darkblue" )
-ggplot() + geom_edgeset( aes(x=x,y=y, size=weight), graph, color="darkblue" )
+ggplot() + geom_edgeset( aes(x=x,y=y, linewidth=weight), graph, color="darkblue" )
 ggplot() + geom_edgeset( aes(x=x,y=y, color=weight), graph, color="darkblue" )
 require(grid)
 ggplot() + geom_edgeset( aes(x=x,y=y), graph, directed=TRUE, arrow=arrow(length=unit(0.5,"cm")) )

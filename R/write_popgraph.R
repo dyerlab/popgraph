@@ -1,20 +1,20 @@
-#' Convience function for file exports
+#' Convenience function for file exports
 #' 
 #' This function is a chokepoint for exporting
 #'  \code{popgraph} objects to other formats.
 #' @param graph An object of type \code{popgraph}.
 #' @param file The path to save the graph into.
 #' @param format The type of output file to use.  Options are:
-#'  \itemize{
-#'    \item{json } { Save as JSON format}
-#'    \item{kml } { Save to KML format to view in GoogleEarth}
-#'    \item{graphml } { Save as Graph Markup Language}
-#'    \item{html } { Save to an interactive html format viewable in your browser}
-#'    \item{pajek } { Save as input to Pajek}
-#'    \item{pgraph } { Save as input for GeneticStudio (default)}
-#'    \item{adjacency } { Saves as an adjacency matrix in csv format}
-#'    \item{paths } { Saves as shortest paths matrix in csv format}
-#'    \item{weights } { Saves as weighted adjacency matrix in csv format}
+#'  \describe{
+#'    \item{json}{Save as JSON format}
+#'    \item{kml}{Save to KML format to view in GoogleEarth}
+#'    \item{graphml}{Save as Graph Markup Language}
+#'    \item{html}{Save to an interactive html format viewable in your browser}
+#'    \item{pajek}{Save as input to Pajek}
+#'    \item{pgraph}{Save as input for GeneticStudio (default)}
+#'    \item{adjacency}{Saves as an adjacency matrix in csv format}
+#'    \item{paths}{Saves as shortest paths matrix in csv format}
+#'    \item{weights}{Saves as weighted adjacency matrix in csv format}
 #'  }
 #' @param ... Ignored
 #' @return Nothing 

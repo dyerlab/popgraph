@@ -3,7 +3,7 @@
 #'  to estimate relative weights of edges in a population graph using local 
 #'  embedding and Markov properties.
 #' @param graph An existing ``popgraph`` object.
-#' @param perplexity A 
+#' @param perplexity A target perplexity value for the bandwidth search (default 4).
 #' @param tol A minimal tolerance for variance values
 #' @param max_iter An upper limit on the iterations necessary for finding a solution.
 #' @return A directional population graph.

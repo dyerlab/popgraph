@@ -1,13 +1,16 @@
-#' Population Graph Constructor that includes parameters for asymmetry and
+#' Asymmetric Population Graph Constructor
 #'
+#' Constructs a population graph that includes parameters for asymmetry
+#' using entropy-based bandwidth estimation and directional edge weights.
 #' @param x A numeric matrix of multivariate genetic data (e.g., from to_mv())
 #' @param groups A factor indicating population membership
 #' @param alpha Significance level for edge retention (default 0.05)
 #' @param tol Tolerance for variance (default 1e-4)
 #' @return A popgraph object with nascent b_i (node) and w_away/w_to (edge) attributes.
+#' @importFrom stats uniroot
 #' @export
 #' @author Rodney J. Dyer <rjdyer@@vcu.edu>
-popgraph <- function(x, groups, alpha = 0.05, tol = 1.0e-4) {
+asymmetric_popgraph <- function(x, groups, alpha = 0.05, tol = 1.0e-4) {
   # 1. INITIAL CHECKS & DATA CLEANING
   if (missing(x)) {
     stop("Data matrix 'x' is required.")
@@ -88,7 +91,7 @@ popgraph <- function(x, groups, alpha = 0.05, tol = 1.0e-4) {
 
   # 4. CONSTRUCT GRAPH
   colnames(adj_matrix) <- rownames(adj_matrix) <- rownames(D)
-  graph <- igraph::graph_from_adjacency(
+  graph <- igraph::graph_from_adjacency_matrix(
     adj_matrix,
     mode = "undirected",
     weighted = TRUE,

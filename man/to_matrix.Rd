@@ -11,7 +11,7 @@ to_matrix(x, mode = c("adjacency", "shortest path", "edge weight")[1], ...)
 
 \item{mode}{The kind of matrix to make.  At present, the following types are
 available:
-  \itemize{ 
+  \describe{
     \item{adjacency}{A binary matrix representing the pairs of connected nodes (default)}
     \item{shortest path}{The shortest path between all nodes.}
     \item{edge weight}{Similar to the adjacency matrix but using edge weights instead of binary

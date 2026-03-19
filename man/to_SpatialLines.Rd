@@ -20,7 +20,7 @@ be decroated with latitude and longitude attributes.}
 A \code{SpatialLines} object
 }
 \description{
-This is a convienence function that takes the edge set and returns a 
+This is a convienence function that takes the edge set and returns a
  SpatialLines object.
 }
 \author{
