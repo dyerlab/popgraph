@@ -8,6 +8,6 @@ Updated 2026.09.29
 > has been folded into the general [gstudio](https://github.com/dyerlab/gstudio) pakcage, 
 > as the population graph framework continues to be developed.
 
-[![Lifecycle: deprecated](https://img.shields.io/badge/lifecycle-deprecated-orange.svg)](https://lifecycle.r-lib.org/a rticles/stages.html#deprecated)
+[![Lifecycle: deprecated](https://img.shields.io/badge/lifecycle-deprecated-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#deprecated)
 
 
