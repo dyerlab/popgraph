@@ -9,6 +9,7 @@
 #' @author Rodney J. Dyer <rjdyer@@vcu.edu>
 #' @export
 read_popgraph <- function( file, sep="\t" ) { 
+  .warn_deprecated()
     
   # load in the raw stuff
   raw <- read.table( file,header=FALSE, stringsAsFactors=FALSE,sep=sep,fill=TRUE)

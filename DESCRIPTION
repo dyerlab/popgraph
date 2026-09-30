@@ -1,11 +1,12 @@
 Package: popgraph
 Type: Package
-Title: Construct and Manipulate Population Graphs
-Version: 1.6.0
-Date: 2026-01-13
+Title: Deprecated: Construct and Manipulate Population Graphs
+Version: 1.6.1
+Date: 2026-09-29
 Authors@R: person("Rodney J.", "Dyer", email = "rjdyer@vcu.edu",
     role = c("aut", "cre"))
-Description: Constructs and analyzes 'Population Graphs', a graph-theoretic
+Description: This package is deprecated and no longer maintained.
+    Constructs and analyzes 'Population Graphs', a graph-theoretic
     topology based upon conditional genetic covariance. Provides tools for
     spatial integration of graph topologies with existing packages including
     'sp', 'sf', and 'ggplot2'.

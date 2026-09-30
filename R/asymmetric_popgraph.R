@@ -11,6 +11,7 @@
 #' @export
 #' @author Rodney J. Dyer <rjdyer@@vcu.edu>
 asymmetric_popgraph <- function(x, groups, alpha = 0.05, tol = 1.0e-4) {
+  .warn_deprecated()
   # 1. INITIAL CHECKS & DATA CLEANING
   if (missing(x)) {
     stop("Data matrix 'x' is required.")
